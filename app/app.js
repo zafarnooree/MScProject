@@ -19,8 +19,8 @@ const db = require('./services/db');
 app.use(express.urlencoded({ extended: true }));
 
 //Get the models
-const { Application } = require("./models/applications");
-const { User } = require("./models/applicant");
+const { Applications } = require("./models/applications");
+const { Applicant } = require("./models/user");
 
 // Create a route for root - /
 app.get("/", function(req, res) {

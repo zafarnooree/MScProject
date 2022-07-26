@@ -1,68 +1,63 @@
-// Get the functions in the db.js file to use
 const db = require('../services/db');
-const bcrypt = require("bcryptjs");
+const { User } = require('./user');
+const { Applications } = require('./applications');
+
 
 class Applicant {
-
-    // Id of the user
-    id;
-
-    // Email of the user
+    // Attributes
+    U_ID;
+    Name;
     email;
 
-    constructor(email) {
-        this.email = email;
+    constructor(U_ID) {
+        this.U_ID = U_ID;
     }
-    
-    // Get an existing user id from an email address, or return false if not found
-    async getIdFromEmail()  {
-        var sql = "SELECT id FROM Users WHERE Users.Email = ?";
-        const result = await db.query(sql, [this.email]);
-        // TODO LOTS OF ERROR CHECKS HERE..
-        if (JSON.stringify(result) != '[]') {
-            this.id = result[0].id;
-            return this.id;
-        }
-        else {
-            return false;
+
+     //Get the user name from the database
+     async getUserDetails() {
+        if (typeof this.Name !== 'string') {
+            var sql = "SELECT * from Applicant where U_ID = ?"
+            const results = await db.query(sql, [this.U_ID]);
+            this.Name = results[0].Name;
         }
     }
 
-    // Add a password to an existing user
-    async setUserPassword(password) {
-        const pw = await bcrypt.hash(password, 10);
-        var sql = "UPDATE Users SET Password = ? WHERE Users.id = ?"
-        const result = await db.query(sql, [pw, this.id]);
-        return true;
-    }
-    
-    // Add a new record to the users table    
-    async addUser(password) {
-        const pw = await bcrypt.hash(password, 10);
-        var sql = "INSERT INTO Users (email, password) VALUES (? , ?)";
-        const result = await db.query(sql, [this.email, pw]);
-        console.log(result.insertId);
-        this.id = result.insertId;
-        return this.id;
-    }
-
-
-
-    // Test a submitted password against a stored password
-    async authenticate(submitted) {
-        // Get the stored, hashed password for the user
-        var sql = "SELECT password FROM Users WHERE id = ?";
-        const result = await db.query(sql, [this.id]);
-        const match = await bcrypt.compare(submitted, result[0].password);
-        if (match == true) {
-            return true;
-        }
-        else {
-            return false;
+    //Get the user profile photo from the database
+    async getUserImage() {
+        if (typeof this.image_path !== 'string') {
+            var sql = "SELECT image_path from image where U_ID = ?"
+            const results = await db.query(sql, [this.U_ID]);
+            this.image_path = results[0].image_path;
         }
     }
+
+    //Get the application details for the applicant
+    async getApplicantApplications() {
+        var sql = "SELECT Applications.A_ID, Applications.Company_Name, Applications.Job_Title, Applications.Location, Applications.Status, Applications.SubmissionDate, Applications.LastUpdate, Applications.Documents, \
+        FROM Applicant \
+        JOIN Applications ON Applicant.U_ID = Applications.A_ID \
+        JOIN Journal ON Journal.J_ID = Applications.A_ID \
+        WHERE Applicant.U_ID = ?;"
+        const results = await db.query(sql, [this.U_ID]);
+        for(var row of results) {
+            this.applications.push(new Applications(row.Company_Name, row.Job_Title, row.Location, row.Status, row.SubmissionDate, row.LastUpdate, row.Documents));
+        }
+    }
+
+    async getApplicantJournal() {
+        var sql = "SELECT Journal.J_ID, Journal.DayOfWeek, Journal.I_Notes, Journal.Feedback \
+        FROM Applicant \
+        JOIN Journal ON Journal.J_ID = Applicant.U_ID \
+        WHERE Applicant.U_ID = ?;"
+        const results = await db.query(sql, [this.U_ID]);
+        for (var row of results) {
+            this.journal.push(new Journal(row.DayOfWeek, row.I_Notes, row.Feedback));
+        }
+
+    }
+
 }
 
-module.exports  = {
+module.exports = {
     Applicant
 }

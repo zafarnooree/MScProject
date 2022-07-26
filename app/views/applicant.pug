@@ -15,20 +15,27 @@ block content
             option(value= 'Heading')
                 table  
                     tr 
-                        th Company Name |  
+                        th Application ID |
+                        th Company Name |
+                        th Job Title |
+                        th Location |
+                        th Status |
+                        th Submission Date |
+                        th Last Update |
+                        th Documents |  
                     tr 
                 for applications in applicant.applications
-                    option(value= 'ApplicationDetails') #{applications.companyName}
+                    option(value= 'ApplicationDetails') #{applications.company_Name}
     h3 Journal
         select
             option(value= 'Heading')
                 table
                     tr
                         th Day of Week | 
-                        th Notes | 
-                        th Attachment/Docs
+                        th I_Notes | 
+                        th Feedback |
                     tr 
                 for journal in applicant.journal
-                    option(value= 'JournalDetails') #{journal.DayOfWeek} | #{journal.Notes} | #{journal.Attachment/Docs}
+                    option(value= 'JournalDetails') #{journal.DayOfWeek} | #{journal.I_Notes} | #{journal.Feedback}
    
         

@@ -7,11 +7,11 @@ block content
         table(border=1)
             tr 
                 th Applicant ID 
-                th Company Name 
+                th Applicant Name 
             tr 
                 for item in data
                     tr
-                        td #{item.A_ID}
+                        td #{item.U_ID}
                         td
-                            a(href='/single-applicant/' + item.A_ID) #{item.C_Name}
+                            a(href='/single-applicant/' + item.U_ID) #{item.Name}
     
