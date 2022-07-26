@@ -1,0 +1,17 @@
+extends layout
+block content
+    - console.log(data)
+    .main-content
+    div.list All Applications
+    div.All-Applications
+        table(border=1)
+            tr 
+                th Applicant ID 
+                th Company Name 
+            tr 
+                for item in data
+                    tr
+                        td #{item.A_ID}
+                        td
+                            a(href='/single-applicant/' + item.A_ID) #{item.C_Name}
+    

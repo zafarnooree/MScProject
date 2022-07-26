@@ -1,0 +1,34 @@
+extends layout
+block content
+    head 
+    title= "Profile Page"
+
+    body
+    h1 #{applicant.Name}
+
+    p Applicant ID: #{applicant.A_ID}
+
+    img(src= applicant.image_path width='200px' height='360px')
+
+    h2 Applications
+         select
+            option(value= 'Heading')
+                table  
+                    tr 
+                        th Company Name |  
+                    tr 
+                for applications in applicant.applications
+                    option(value= 'ApplicationDetails') #{applications.companyName}
+    h3 Journal
+        select
+            option(value= 'Heading')
+                table
+                    tr
+                        th Day of Week | 
+                        th Notes | 
+                        th Attachment/Docs
+                    tr 
+                for journal in applicant.journal
+                    option(value= 'JournalDetails') #{journal.DayOfWeek} | #{journal.Notes} | #{journal.Attachment/Docs}
+   
+        

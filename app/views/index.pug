@@ -1,0 +1,15 @@
+extends layout 
+block content
+    head 
+    title= "Profile Page"
+
+    body 
+    h1 #{heading}
+    img(src='/images/.png' width='200px' height='360px')
+    div.name
+    h2 My Profile
+        select(name="contents")
+            option(value=1) Select
+            option(value=2) Applications
+            option(value=3) Journal
+    h3 Calender 

@@ -1,0 +1,401 @@
+header {
+    text-align: center;
+    padding: 10px;
+    font-family: Helvetica;
+    font-size: xxx-large;
+}
+
+p {
+    position: absolute;
+    margin-top: 150;
+    margin-left: 400;
+    border-style: solid;
+    border-color: #c27536;
+    background-color: #c27536;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+}
+
+.p1 {
+    font-style: oblique;
+    font-family: Garamond;
+    position: absolute;
+    margin-top: 100;
+    margin-left: 50;
+    font-size: xx-large;
+}
+
+.p2 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    margin-top: 200;
+    margin-left: 50;
+    font-size: x-large;
+}
+
+.p3 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    margin-top: 400;
+    margin-left: 50;
+    font-size: x-large;
+}
+
+.p4 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    margin-top: 200;
+    margin-left: 680;
+    font-size: x-large;
+}
+
+.p5 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: 270;
+    margin-left: 50;
+}
+
+.p6 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: -63;
+    margin-left: 300;
+}
+
+.p7 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: 270;
+    margin-left: 650;
+}
+
+.p8 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: 500;
+    margin-left: 50;
+}
+
+.p9 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: 500;
+    margin-left: 300;
+}
+
+.p10 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: 290;
+    margin-left: 800;
+}
+
+.p11 {
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.p12 {
+    font-style: oblique;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: x-large;
+    margin-top: 630;
+    margin-left: 300;
+}
+
+.p13 {
+    font-style: oblique;
+    font-family: Garamond;
+    position: absolute;
+    margin-top: 100;
+    margin-left: 270;
+    font-size: xx-large;
+}
+
+
+.pic {
+    margin-left: 100;
+    margin-top: 130;
+    position: absolute;
+    width: 250;
+    height: 250;
+}
+
+.list {
+    white-space: nowrap;
+    position: absolute;
+    right: 800px;
+    width: 300px;
+    padding: 10px;
+    font-family: Helvetica;
+    font-size: xxx-large;
+    font-weight: 900;
+    text-align: center;
+}
+
+.All-Applications {
+    margin-left: 100;
+    margin-top: -200;
+    position: absolute;
+    font-size: xxx-large;
+    font-weight: 900;
+    font-family: Helvetica;
+    text-align: center;
+    padding: 350px;
+}
+
+
+h1 {
+    white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    width: 300px;
+    padding: 10px;
+    font-family: Helvetica;
+    margin-left: 450;
+}
+
+h2 {
+    margin-top: 225;
+    position: absolute;
+    margin-left: 400;
+    border-style: solid;
+    border-color: #c27536;
+    background-color: #c27536;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+}
+
+h3 {
+    margin-top: 310;
+    position: absolute;
+    margin-left: 400;
+    border-style: solid;
+    border-color: #c27536;
+    background-color: #c27536;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+}
+
+h4 {
+    margin-top: 400;
+    margin-left: 400;
+    border-color: aliceblue;
+    background-color: aliceblue;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-style: groove;
+    border-width: 6px;
+    border-radius: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h5 {
+    position: absolute;
+    margin-top: 290;
+    margin-left: 800;
+    border-style: solid;
+    border-color: #c27536;
+    background-color: #c27536;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+}
+
+h6 {
+    position: absolute;
+    margin-left: 400;
+    border-style: solid;
+    border-color: aliceblue;
+    background-color: aliceblue;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+}
+
+h7 {
+    position: absolute;
+    margin-top: 100;
+    margin-left: 400;
+    border-style: solid;
+    border-color: #c27536;
+    background-color: #c27536;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+img {
+    margin-left: 100;
+    margin-top: 130;
+    position: absolute;
+    border: 2px solid #000000;
+    border-radius: 15px 50px;
+    background: linear-gradient(to bottom right, rgb(93, 223, 223), #c27536);
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+.logo {
+    background: url("https://i.postimg.cc/YqFggNPD/link-learn-logo-removebg-preview.png");
+    width: 335;
+    height: 230;
+    margin-top: -100;
+    margin-left: 450;
+  }
+
+
+.name {
+    margin-top: 150;
+    position: absolute;
+    margin-left: 400;
+    border-style: solid;
+    border-color: #c27536;
+    background-color: #c27536;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+}
+
+select {
+    text-align: center;
+    border-style: none;
+    background-color: #c27536;
+    font-family: Helvetica;
+}
+
+
+body {
+    background-image: url("https://media.istockphoto.com/photos/business-and-education-background-picture-id671101136?k=20&m=671101136&s=170667a&w=0&h=IRW440E5O4UWMO0wRHdkTaNgdO6DzD_VnEqzJ-XAl0M=");
+    background-repeat: no-repeat;
+    background-size: 1700px 900px;
+}
+
+.btn {
+    border-color: #c27536;
+    background-color: #c27536;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+  }
+  
+.btn:hover{
+    border-left: 3px solid blue;
+}
+
+
+/* Style The Dropdown Button */
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #c27536;
+    display: inline-block;
+    width: 150px;
+    border-color: #c27536;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    max-height:150px; 
+    overflow-x:hidden; 
+    overflow-y:auto;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+.dropdown {
+display: inline-block;
+position: fixed;
+z-index: 1000;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+text-align: center;
+background-color: #c27536;
+min-width: 160px;
+box-shadow: none;
+box-sizing: border-box;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+font-size: small;
+font-weight: 700;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    border-left: 3px solid blue;
+}
+
+
+body {
+    height:100vh;
+    width:100vw;
+    background-color:rgb(19, 20, 22);
+    overflow:hidden;
+    font-family: Lato, "Trebuchet MS", "Verdana", "sans-serif";
+  }
+
+.hbtn {
+background-color: DodgerBlue;
+border: none;
+color: white;
+padding: 12px 16px;
+font-size: 16px;
+cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.hbtn:hover {
+background-color: RoyalBlue;
+}

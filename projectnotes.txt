@@ -1,0 +1,5 @@
+Creating Database for the Applcation
+
+CREATE Database 'rTracker'
+
+CREATE TABLE `rTracker`.`Applications` ( `A_ID` INT NOT NULL AUTO_INCREMENT ,  `Company_Name` VARCHAR(90) NOT NULL ,  `Job_Title` VARCHAR(90) NOT NULL ,  `Location` VARCHAR(50) NOT NULL ,  `Status` VARCHAR(50) NOT NULL ,  `SubmissionDate` DATE NOT NULL ,  `LastUpdate` DATE NULL ,  `Documents` BLOB NULL ,    PRIMARY KEY  (`A_ID`)) ENGINE = InnoDB;
