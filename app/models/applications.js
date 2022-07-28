@@ -1,6 +1,5 @@
 const db = require('../services/db');
 const { User } = require('./user');
-const { Applications } = require('./applications');
 
 
 class Applications {
