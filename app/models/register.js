@@ -1,17 +1,12 @@
 const db = require('../services/db');
+const { User } = require('./user');
 const { Applicant } = require('./applicant');
-const { Applications } = require('./applications');
 
 class register {
     // Attributes
-    A_ID;
-    Company_Name;
-    Job_Title;
-    Location = [];
-    Status = [];
-    SubmissionDate = [];
-    LastUpdate = [];
-    Documents = [];
+    U_ID;
+    Name;
+    email;
 
     constructor(Name) {
         this.Name = Name;

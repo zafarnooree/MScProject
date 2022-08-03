@@ -61,17 +61,17 @@ app.get('/account', function (req, res) {
 // Set password route
 app.post('/set-password', async function (req, res) {
     params = req.body;
-    var user = new User(params.email);
+    var User = new Applicant(params.email);
     try {
-        uId = await user.getIdFromEmail();
-        if (uId) {
+        U_ID = await User.getIdFromEmail();
+        if (id) {
             // If a valid, existing user is found, set the password and redirect to the users single-student page
-            await user.setUserPassword(params.password);
-            res.redirect('/single-applicant/' + uId);
+            await User.setUserPassword(params.password);
+            res.redirect('/applicant/' + U_ID);
         }
         else {
             // If no existing user is found, add a new one
-            newId = await user.addUser(params.email);
+            newId = await User.addUser(params.email);
             res.send('Perhaps a page where a new user sets a programme would be good here');
         }
     } catch (err) {

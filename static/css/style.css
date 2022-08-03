@@ -3,6 +3,23 @@ header {
     padding: 10px;
     font-family: Helvetica;
     font-size: xxx-large;
+    background:rgba(255,255,255,0.6);
+    transition:background 1.5s ease;
+    position:relative;
+   z-index:99;
+}
+
+header.header-sticky{
+    background:#fff;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:999;
+}
+
+header.header-slider{
+    margin-top:-50px;
 }
 
 p {
@@ -10,8 +27,8 @@ p {
     margin-top: 150;
     margin-left: 400;
     border-style: solid;
-    border-color: #c27536;
-    background-color: #c27536;
+    border-color: #a1c236;
+    background-color: #3670c2;
     border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
@@ -19,37 +36,46 @@ p {
 
 .p1 {
     font-style: oblique;
-    font-family: Garamond;
+    font-family: Arial, Helvetica, sans-serif;
     position: absolute;
-    margin-top: 100;
-    margin-left: 50;
-    font-size: xx-large;
+    margin-top: 200;
+    margin-left: 100;
+    font-size: x-large;
 }
 
 .p2 {
     font-style: oblique;
     font-family: Helvetica;
     position: absolute;
-    margin-top: 200;
-    margin-left: 50;
-    font-size: x-large;
+    margin-top: 250;
+    margin-left: 70;
+    font-size: xxx-large;
+    padding: 1rem;
+    border-width: 4px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        rgb(74, 1, 96), 
+        rgba(0, 0, 0, 0)
+      ) 1 100%;
 }
 
 .p3 {
     font-style: oblique;
-    font-family: Helvetica;
+    font-family: Garamond;
     position: absolute;
     margin-top: 400;
-    margin-left: 50;
+    margin-left: 150;
     font-size: x-large;
 }
 
 .p4 {
     font-style: oblique;
-    font-family: Helvetica;
+    font-family: Garamond;
     position: absolute;
-    margin-top: 200;
-    margin-left: 680;
+    margin-top: 400;
+    margin-left: 400;
     font-size: x-large;
 }
 
@@ -57,79 +83,24 @@ p {
     font-style: oblique;
     font-family: Helvetica;
     position: absolute;
-    font-size: x-large;
-    margin-top: 270;
-    margin-left: 50;
+    font-size: Small;
+    margin-top: 480;
+    margin-left: 150;
 }
 
 .p6 {
     font-style: oblique;
     font-family: Helvetica;
     position: absolute;
-    font-size: x-large;
-    margin-top: -63;
-    margin-left: 300;
+    font-size: small;
+    margin-top: 480;
+    margin-left: 400;
 }
 
 .p7 {
-    font-style: oblique;
-    font-family: Helvetica;
-    position: absolute;
-    font-size: x-large;
-    margin-top: 270;
-    margin-left: 650;
-}
-
-.p8 {
-    font-style: oblique;
-    font-family: Helvetica;
-    position: absolute;
-    font-size: x-large;
-    margin-top: 500;
-    margin-left: 50;
-}
-
-.p9 {
-    font-style: oblique;
-    font-family: Helvetica;
-    position: absolute;
-    font-size: x-large;
-    margin-top: 500;
-    margin-left: 300;
-}
-
-.p10 {
-    font-style: oblique;
-    font-family: Helvetica;
-    position: absolute;
-    font-size: x-large;
-    margin-top: 290;
-    margin-left: 800;
-}
-
-.p11 {
     margin-top: 0;
     margin-left: 0;
 }
-
-.p12 {
-    font-style: oblique;
-    font-family: Helvetica;
-    position: absolute;
-    font-size: x-large;
-    margin-top: 630;
-    margin-left: 300;
-}
-
-.p13 {
-    font-style: oblique;
-    font-family: Garamond;
-    position: absolute;
-    margin-top: 100;
-    margin-left: 270;
-    font-size: xx-large;
-}
-
 
 .pic {
     margin-left: 100;
@@ -178,8 +149,8 @@ h2 {
     position: absolute;
     margin-left: 400;
     border-style: solid;
-    border-color: #c27536;
-    background-color: #c27536;
+    border-color: #3670c2;
+    background-color: #3670c2;
     border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
@@ -190,8 +161,8 @@ h3 {
     position: absolute;
     margin-left: 400;
     border-style: solid;
-    border-color: #c27536;
-    background-color: #c27536;
+    border-color: #a1c236;
+    background-color: #3670c2;
     border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
@@ -217,8 +188,8 @@ h5 {
     margin-top: 290;
     margin-left: 800;
     border-style: solid;
-    border-color: #c27536;
-    background-color: #c27536;
+    border-color: #3670c2;
+    background-color: #3670c2;
     border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
@@ -239,13 +210,37 @@ h7 {
     position: absolute;
     margin-top: 100;
     margin-left: 400;
-    border-style: solid;
-    border-color: #c27536;
-    background-color: #c27536;
-    border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
     font-weight: bold;
+    padding: 1rem;
+    border-width: 4px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        rgb(74, 1, 96), 
+        rgba(0, 0, 0, 0)
+      ) 1 100%;
+}
+
+
+h8 {
+    position: absolute;
+    margin-top: 200;
+    margin-left: 400;
+    border-radius: 10px;
+    font-family: Helvetica;
+    font-weight: bold;
+    padding: 1rem;
+    border-width: 4px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        rgb(74, 1, 96), 
+        rgba(0, 0, 0, 0)
+      ) 1 100%;
 }
 
 img {
@@ -254,14 +249,14 @@ img {
     position: absolute;
     border: 2px solid #000000;
     border-radius: 15px 50px;
-    background: linear-gradient(to bottom right, rgb(93, 223, 223), #c27536);
+    background: linear-gradient(to bottom right, rgb(93, 223, 223), #3670c2);
     padding: 20px;
     width: 200px;
     height: 200px;
 }
 
 .logo {
-    background: url("https://i.postimg.cc/YqFggNPD/link-learn-logo-removebg-preview.png");
+    background: url("");
     width: 335;
     height: 230;
     margin-top: -100;
@@ -274,8 +269,8 @@ img {
     position: absolute;
     margin-left: 400;
     border-style: solid;
-    border-color: #c27536;
-    background-color: #c27536;
+    border-color: #3670c2;
+    background-color: #3670c2;
     border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
@@ -284,35 +279,36 @@ img {
 select {
     text-align: center;
     border-style: none;
-    background-color: #c27536;
+    background-color: #3670c2;
     font-family: Helvetica;
 }
 
 
 body {
-    background-image: url("https://media.istockphoto.com/photos/business-and-education-background-picture-id671101136?k=20&m=671101136&s=170667a&w=0&h=IRW440E5O4UWMO0wRHdkTaNgdO6DzD_VnEqzJ-XAl0M=");
+    background: url("https://i.postimg.cc/c1wv5Cvn/leone-venter-Vie-M9-Bd-ZKFo-unsplash-1.jpg");
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: 1700px 900px;
+    background-size: 1600px 900px;
 }
 
 .btn {
-    border-color: #c27536;
-    background-color: #c27536;
-    color: white;
-    padding: 10px 20px;
+    background: linear-gradient(to right, rgb(138, 92, 245), rgb(22, 20, 20));
+    max-width: 250px;
+    padding: 1rem;
+    position: relative;
     text-decoration: none;
+    color: white;
     display: inline-block;
     font-size: 20px;
-    border-style: solid;
+    border-style: linear-gradient(to right, rgb(138, 92, 245), rgb(22, 20, 20));
     border-width: 10px;
     border-radius: 10px;
-    font-family: Helvetica;
+    font-family: Arial, Helvetica, sans-serif;
   }
-  
-.btn:hover{
-    border-left: 3px solid blue;
-}
 
+.btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 
 /* Style The Dropdown Button */
 .dropbtn {
@@ -320,10 +316,10 @@ body {
     padding: 16px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #c27536;
+    background-color: #3670c2;
     display: inline-block;
     width: 150px;
-    border-color: #c27536;
+    border-color: #3670c2;
     padding: 10px 20px;
     font-size: 20px;
     border-style: solid;
@@ -346,7 +342,7 @@ z-index: 1000;
 .dropdown-content {
 display: none;
 text-align: center;
-background-color: #c27536;
+background-color: #3670c2;
 min-width: 160px;
 box-shadow: none;
 box-sizing: border-box;
@@ -381,7 +377,7 @@ font-weight: 700;
 body {
     height:100vh;
     width:100vw;
-    background-color:rgb(19, 20, 22);
+    background-color:rgb(148, 175, 227);
     overflow:hidden;
     font-family: Lato, "Trebuchet MS", "Verdana", "sans-serif";
   }

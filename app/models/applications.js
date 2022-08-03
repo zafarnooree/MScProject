@@ -1,5 +1,6 @@
 const db = require('../services/db');
 const { User } = require('./user');
+const { Applicant } = require('./applicant');
 
 
 class Applications {
