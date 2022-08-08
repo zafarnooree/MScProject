@@ -6,12 +6,20 @@ block content
     div.All-Applications
         table(border=1)
             tr 
-                th Applicant ID 
-                th Applicant Name 
+                th Application ID 
+                th Company Name 
+                th Job Title 
+                th Location
+                th Status
+                th Submission Date
+                th Last Update Recieved
+                th Documents
             tr 
-                for item in data
+                for User in User.Applications
                     tr
-                        td #{item.U_ID}
+                        td #{User.id}
                         td
-                            a(href='/applicant/' + item.U_ID) #{item.Name}
+                            a(href='/user/' + User.id) #{User.Name} #{User.email}
+                            a(href='/applications/' + Applications.A_ID) #{Applications.Company_Name} #{Applications.Job_Title} #{Applications.Location} #{Applications.Status} #{Applications.SubmissionDate} #{Applications.LastUpdate} #{Applications.Documents} 
+
     

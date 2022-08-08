@@ -4,13 +4,13 @@ block content
     title= "Profile Page"
 
     body
-    h1 #{applicant.Name}
+    h1 #{User.Name}
 
-    p Applicant ID: #{applicant.A_ID}
+    p User ID: #{User.id}
 
-    img(src= applicant.image_path width='200px' height='360px')
+    img(src= user.image_path width='200px' height='360px')
 
-    h2 Applications
+    h2 Recent Applications
          select
             option(value= 'Heading')
                 table  
@@ -24,7 +24,7 @@ block content
                         th Last Update |
                         th Documents |  
                     tr 
-                for applications in applicant.applications
+                for applications in user.applications
                     option(value= 'ApplicationDetails') #{applications.company_Name}
     h3 Journal
         select
@@ -35,7 +35,7 @@ block content
                         th I_Notes | 
                         th Feedback |
                     tr 
-                for journal in applicant.journal
+                for journal in user.journal
                     option(value= 'JournalDetails') #{journal.DayOfWeek} | #{journal.I_Notes} | #{journal.Feedback}
    
         

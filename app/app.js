@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Get the models
 const { Applications } = require("./models/applications");
-const { Applicant } = require("./models/user");
+const { User } = require("./models/user");
 
 // Create a route for root - /
 app.get("/", function(req, res) {
@@ -61,13 +61,13 @@ app.get('/account', function (req, res) {
 // Set password route
 app.post('/set-password', async function (req, res) {
     params = req.body;
-    var User = new Applicant(params.email);
+    var user = new User(params.email);
     try {
-        U_ID = await User.getIdFromEmail();
+        id = await User.getIdFromEmail();
         if (id) {
-            // If a valid, existing user is found, set the password and redirect to the users single-student page
+            // If a valid, existing user is found, set the password and redirect to the users profile page
             await User.setUserPassword(params.password);
-            res.redirect('/applicant/' + U_ID);
+            res.redirect('/user/' + id);
         }
         else {
             // If no existing user is found, add a new one
@@ -84,20 +84,25 @@ app.get('/login', function (req, res) {
     res.render('login');
 });
 
+// Route for 'newentry.pug'
+app.get('/newentry', function (req, res) {
+    res.render('newentry');
+});
+
 // Check submitted email and password pair
 app.post('/authenticate', async function (req, res) {
     params = req.body;
     var user = new User(params.email);
     try {
         uId = await user.getIdFromEmail();
-        if (uId) {
+        if (id) {
             match = await user.authenticate(params.password);
             if (match) {
                 // Set the session for the user
-                req.session.uid = uId;
+                req.session.id = id;
                 req.session.loggedIn = true;
                 console.log(req.session);
-                res.redirect('/single-applicant/' + uId);
+                res.redirect('/user/' + id);
             }
             else {
                 // TODO improve the user journey here
@@ -119,24 +124,24 @@ app.get('/logout', function (req, res) {
   });
 
 
-app.get("/single-applicant/:id", async function(req, res) {
-    var tId = req.params.id;
+app.get("/user/:id", async function(req, res) {
+    var id = req.params.id;
     //Create a user profile with ID passed
-    var applicant = new Applicant(tId);
-    await applicant.getApplicantDetails();
-    await applicant.getApplicantImage();
-    await applicant.getApplicantApplications();
-    await applicant.getApplicantJournal();
+    var user = new User(id);
+    await user.getUserDetails();
+    await user.getUserImage();
+    await user.getUserApplications();
+    await user.getUserJournal();
     resultApplications = await getapplications.getAllApplications();
-    res.render('applicant', {'applicant':applicant, 'Applications':resultApplications});
+    res.render('user', {'User':user, 'Applications':resultApplications});
 });
 
 // Create route for the calendar
 // Here we have a page which demonstrates how to both input dates and display dates
-app.get("/applicant", async function(req, res) {
+app.get("/user", async function(req, res) {
     // Get all the dates from the db to display
     // NB Move this to a model that is appropriate to your project
-    sql = "SELECT * from test_applications";
+    sql = "SELECT * from applications";
     // We could format dates either in the template or in the backend
     dates = [];
     results = await db.query(sql);
@@ -171,6 +176,8 @@ app.post('/set-date', async function (req, res) {
     }
     res.send('date added');
 });
+
+
 
 //**********************************************************************************
 

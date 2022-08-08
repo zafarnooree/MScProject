@@ -8,7 +8,6 @@ class Journal {
     J_ID;
     DayOfWeek;
     I_Notes;
-    Feedback:
 
     constructor(DayOfWeek, I_Notes, Feedback) {
         this.DayOfWeek = DayOfWeek;
@@ -18,7 +17,7 @@ class Journal {
 
     async getJournal() {
         var sql = "SELECT * from Journal where J_ID = ?"
-        const results = await db.query(sql, [this.U_ID]);
+        const results = await db.query(sql, [this.id]);
         this.DayOfWeek = results[0].DayOfWeek
         this.I_Notes = results[0].I_Notes;
         this.Feedback = results[0].Feedback;
