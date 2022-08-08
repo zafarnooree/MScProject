@@ -2,19 +2,27 @@ extends layout
 block content 
 
     header Add a New Job Application Entry
-    h1      
-        form(action='/newentry' method='POST') 
-            label(for='Company_Name') Please enter the name of the company: 
-            input('name'='Company_Name')
-            label(for='Job_Title') Please enter the job title: 
-            input('name'='Job_Title')
-            label(for='Location') Please enter the work location: 
-            input('name'='Location')
-            label(for='Status') Select the application status: 
-            input('name'='Status')
-            label(for='SubmissionDate') Add the date you submitted the application: 
-            input('name'='SubmissionDate')
-            label(for='LastUpdate') Add the date you last had any interaction with the recruiter: 
-            input('name'='LastUpdate')
-            input(type='submit' value='Submit')
-    
+    h9 
+        table 
+            tr      
+                form(action='/newentry' method='POST') 
+                th 
+                    label(for='Company_Name') Please enter the name of the company: 
+                    input('name'='Company_Name')
+                th 
+                    label(for='Job_Title') Please enter the job title: 
+                    input('name'='Job_Title')
+                th 
+                    label(for='Location') Please enter the work location: 
+                    input('name'='Location')
+                th
+                    label(for='Status') Select the application status: 
+                    input('name'='Status')
+                th 
+                    label(for='SubmissionDate') Add the date you submitted the application: 
+                    input('name'='SubmissionDate')
+                th 
+                    label(for='LastUpdate') Add the date you last had any interaction with the recruiter: 
+                    input('name'='LastUpdate')
+                    input(type='submit' value='Submit')
+            tr
