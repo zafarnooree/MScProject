@@ -1,15 +1,15 @@
 extends layout
 block content
     header Register here
-    h7      
-        form(action='/set-password' method='POST') 
-            label(for='email') Enter Your Email: 
-            input('name'='email')
-    h8 
-            label(for='Name') Enter Your Name: 
-            input('name'='Name')    
-    h9 
-            label(for='email') Enter Your Password: 
-            input('name'='password')
-    h10
-            input(type='submit' value='Submit')
+
+        form(action='/set_password' method='POST') 
+                h7  
+                 | Register with your Email: 
+                 input(type="text",name="email",value='')
+                h8
+                 |  Username: 
+                 input(type="text",name="name",value='')
+                h9
+                 |  Password: 
+                 input(type="text",name="password",value='')
+                input.rbtn(type="submit", value="Submit")

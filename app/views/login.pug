@@ -3,9 +3,9 @@ block content
     header Log In To Your Existing Account
     h7 
         form(action='/authenticate' method='POST')
-            label(for='email') Enter Your Email: 
-            input('name'='email')
-    h8
-            label(for='email') Enter Your Password: 
-            input('name'='password')
-            input(type='submit' value='Submit')
+                p 
+                 | Email: 
+                 input(type="text",name="email",value='')
+                 |  Password: 
+                 input(type="text",name="password",value='')
+                input(type="submit", value="Submit")

@@ -2,6 +2,7 @@ extends layout
 block content
     - console.log(data)
     .main-content
+
     div.list All Applications
     div.All-Applications
         table(border=1)
@@ -15,12 +16,22 @@ block content
                 th Last Update Recieved
                 th Documents
             tr 
-            //There's an issue with this query code
-                for User in User.Applications
+                for item in data
                     tr
-                        td #{User.id}
+                        td #{item.A_ID}
                         td
-                            a(href='/user/' + User.id) #{User.Name} #{User.email}
-                            a(href='/applications/' + Applications.A_ID) #{Applications.Company_Name} #{Applications.Job_Title} #{Applications.Location} #{Applications.Status} #{Applications.SubmissionDate} #{Applications.LastUpdate} #{Applications.Documents} 
+                            a(href='/user/' + item.A_ID) #{item.Company_Name} 
+                        td
+                            a(href='/user/' + item.A_ID) #{item.Job_Title}
+                        td
+                            a(href='/user/' + item.A_ID) #{item.Location}
+                        td
+                            a(href='/user/' + item.A_ID) #{item.Status}
+                        td
+                            a(href='/user/' + item.A_ID) #{item.SubmissionDate}
+                        td
+                            a(href='/user/' + item.A_ID) #{item.LastUpdate}
+                        td
+                            a(href='/user/' + item.A_ID) #{item.Documents}
 
-    
+            

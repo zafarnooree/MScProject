@@ -13,13 +13,14 @@ class User {
     // Email of the user
     email;
 
-    constructor(email) {
+    constructor(name,email) {
+        this.Name=name;
         this.email = email;
     }
     
     // Get an existing user id from an email address, or return false if not found
     async getIdFromEmail()  {
-        var sql = "SELECT id FROM Users WHERE Users.email = ?";
+        var sql = "SELECT id FROM User WHERE email = ?";
         const result = await db.query(sql, [this.email]);
         // TO DO LOTS OF ERROR CHECKS HERE..
         if (JSON.stringify(result) != '[]') {
@@ -34,7 +35,7 @@ class User {
     // Add a password to an existing user
     async setUserPassword(password) {
         const pw = await bcrypt.hash(password, 10);
-        var sql = "UPDATE Users SET Password = ? WHERE Users.id = ?"
+        var sql = "UPDATE User SET Password = ? WHERE id = ?"
         const result = await db.query(sql, [pw, this.id]);
         return true;
     }
@@ -42,8 +43,8 @@ class User {
     // Add a new record to the users table    
     async addUser(password) {
         const pw = await bcrypt.hash(password, 10);
-        var sql = "INSERT INTO Users (email, password) VALUES (? , ?)";
-        const result = await db.query(sql, [this.email, pw]);
+        var sql = "INSERT INTO User (Name,email, password) VALUES (? , ? , ?)";
+        const result = await db.query(sql, [this.Name,this.email, password]);
         console.log(result.insertId);
         this.id = result.insertId;
         return this.id;
@@ -52,7 +53,7 @@ class User {
     // Test a submitted password against a stored password
     async authenticate(submitted) {
         // Get the stored, hashed password for the user
-        var sql = "SELECT password FROM Users WHERE id = ?";
+        var sql = "SELECT password FROM User WHERE id = ?";
         const result = await db.query(sql, [this.id]);
         const match = await bcrypt.compare(submitted, result[0].password);
         if (match == true) {

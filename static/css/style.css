@@ -24,14 +24,20 @@ header.header-slider{
 
 p {
     position: absolute;
-    margin-top: 150;
-    margin-left: 400;
-    border-style: solid;
-    border-color: #a1c236;
-    background-color: #3670c2;
-    border-width: 10px;
-    border-radius: 10px;
+    margin-top: 100;
     font-family: Helvetica;
+    font-weight: bold;
+    font-size: large;
+    padding: 1rem;
+    border-radius: 5px;
+    border-width: 4px;
+    border-style: groove;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        rgb(74, 1, 96), 
+        rgba(0, 0, 0, 0)
+      ) 1 100%;
 }
 
 .p1 {
@@ -209,11 +215,11 @@ h6 {
 h7 {
     position: absolute;
     margin-top: 100;
-    margin-left: 400;
-    border-radius: 10px;
     font-family: Helvetica;
     font-weight: bold;
+    font-size: large;
     padding: 1rem;
+    border-radius: 5px;
     border-width: 4px;
     border-style: solid;
     border-image: 
@@ -230,6 +236,7 @@ h8 {
     margin-top: 200;
     margin-left: 400;
     border-radius: 10px;
+    font-size: large;
     font-family: Helvetica;
     font-weight: bold;
     padding: 1rem;
@@ -248,6 +255,7 @@ h9 {
     margin-top: 300;
     margin-left: 400;
     border-radius: 10px;
+    font-size: large;
     font-family: Helvetica;
     font-weight: bold;
     padding: 1rem;
@@ -440,4 +448,11 @@ cursor: pointer;
 /* Darker background on mouse-over */
 .hbtn:hover {
 background-color: RoyalBlue;
+}
+
+.rbtn {
+    font-weight: bold;
+    font-size: large;
+    float: left;
+    margin-top: 400px;
 }

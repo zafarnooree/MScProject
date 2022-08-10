@@ -59,19 +59,20 @@ app.get('/account', function (req, res) {
 });
 
 // Set password route
-app.post('/set-password', async function (req, res) {
+app.post('/set_password', async function (req, res) {
     params = req.body;
-    var user = new User(params.email);
+    var user = new User(params.name,params.email);
+    console.log(params.email);
     try {
-        id = await User.getIdFromEmail();
+        id = await user.getIdFromEmail();
         if (id) {
             // If a valid, existing user is found, set the password and redirect to the users profile page
-            await User.setUserPassword(params.password);
+            await user.setUserPassword(params.password);
             res.redirect('/user/' + id);
         }
         else {
             // If no existing user is found, add a new one
-            newId = await User.addUser(params.email);
+            newId = await user.addUser(params.password);
             res.send('Perhaps a page where a new user sets a programme would be good here');
         }
     } catch (err) {
@@ -92,7 +93,8 @@ app.get('/newentry', function (req, res) {
 // Check submitted email and password pair
 app.post('/authenticate', async function (req, res) {
     params = req.body;
-    var user = new User(params.email);
+    var user = new User(params.email, params.password);
+    console.log(params.email);
     try {
         id = await user.getIdFromEmail();
         if (id) {
@@ -105,11 +107,12 @@ app.post('/authenticate', async function (req, res) {
                 res.redirect('/user/' + id);
             }
             else {
-                // TODO improve the user journey here
+                // Checking the validity of the password
                 res.send('invalid password');
             }
         }
         else {
+            // Checking the validity of the email
             res.send('invalid email');
         }
     } catch (err) {
@@ -124,7 +127,7 @@ app.get('/logout', function (req, res) {
   });
 
 
-app.get("/user/:id", async function(req, res) {
+app.get("/all-applications/:id", async function(req, res) {
     var id = req.params.id;
     //Create a user profile with ID passed
     var user = new User(id);

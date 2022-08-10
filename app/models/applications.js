@@ -48,9 +48,9 @@ class Applications {
     //Get the application details for the user
     async getUserApplications() {
         var sql = "SELECT Applications.A_ID, Applications.Company_Name, Applications.Job_Title, Applications.Location, Applications.Status, Applications.SubmissionDate, Applications.LastUpdate, Applications.Documents, \
-        FROM User \
-        JOIN Applications ON User.id = Applications.A_ID \
-        JOIN Journal ON Journal.J_ID = Applications.A_ID \
+        FROM Applications \
+        JOIN Applications ON Applications.id = User.id \
+        JOIN Journal ON Journal.A_ID = Applications.A_ID \
         WHERE User.id = ?;"
         const results = await db.query(sql, [this.id]);
         for(var row of results) {
