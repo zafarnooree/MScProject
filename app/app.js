@@ -40,11 +40,12 @@ app.get("/index", function(req, res) {
 
 
 // Create a route for testing the db
-app.get("/all-applications", function(req, res) {
+app.get("/all-applications/:uid", function(req, res) {
+    params = req.params;
     // Prepare an SQL query that will return all rows from the teacher_table
-    var sql = 'select * from Applications';
-    db.query(sql).then(results => {
-        res.render('all-applications', {data:results});
+    var sql = 'select * from Applications WHERE id = ?';
+    db.query(sql, [params.uid]).then(results => {
+        res.render('all-applications', {applications:results});
     });
 });
 

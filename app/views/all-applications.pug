@@ -14,13 +14,16 @@ block content
                 th Submission Date
                 th Last Update Recieved
                 th Documents
-            tr 
-            //There's an issue with this query code
-                for User in User.Applications
-                    tr
-                        td #{User.id}
-                        td
-                            a(href='/user/' + User.id) #{User.Name} #{User.email}
-                            a(href='/applications/' + Applications.A_ID) #{Applications.Company_Name} #{Applications.Job_Title} #{Applications.Location} #{Applications.Status} #{Applications.SubmissionDate} #{Applications.LastUpdate} #{Applications.Documents} 
+            for row in applications 
+                tr
+                    td #{row.A_ID}
+                    td #{row.Company_Name}
+                    td #{row.Job_Title}
+                    td #{row.Location}
+                    td #{row.Status}
+                    td #{row.SubmissionDate}
+                    td #{row.LastUpdate}
+                    td #{row.Documents}
+                
 
     
