@@ -19,7 +19,7 @@ const db = require('./services/db');
 app.use(express.urlencoded({ extended: true }));
 
 //Get the models
-const { Applications } = require("./models/applications");
+/* const { Applications } = require("./models/applications"); */
 const { User } = require("./models/user");
 
 // Create a route for root - /
@@ -88,6 +88,12 @@ app.get('/login', function (req, res) {
 // Route for 'newentry.pug'
 app.get('/newentry', function (req, res) {
     res.render('newentry');
+});
+
+//Route to recieve new entry form posting
+app.post('/newentry', function (req, res) {
+    console.log('code here to add to the database');
+
 });
 
 // Check submitted email and password pair
