@@ -19,7 +19,7 @@ const db = require('./services/db');
 app.use(express.urlencoded({ extended: true }));
 
 //Get the models
-const { Applications } = require("./models/applications");
+//const { Applications } = require("./models/applications");
 const { User } = require("./models/user");
 
 // Create a route for root - /
@@ -37,7 +37,6 @@ app.get("/index", function(req, res) {
     res.render("index",
         {'title':'Profile Page', 'heading': 'heading'});
 });
-
 
 // Create a route for testing the db
 app.get("/all-applications", function(req, res) {
@@ -90,6 +89,12 @@ app.get('/newentry', function (req, res) {
     res.render('newentry');
 });
 
+//Route to recieve new entry form posting
+app.post('/newentry', function (req, res) {
+    console.log('code here to add to the database');
+
+});
+
 // Check submitted email and password pair
 app.post('/authenticate', async function (req, res) {
     params = req.body;
@@ -125,7 +130,6 @@ app.get('/logout', function (req, res) {
     req.session.destroy();
     res.redirect('/login');
   });
-
 
 app.get("/all-applications/:id", async function(req, res) {
     var id = req.params.id;
