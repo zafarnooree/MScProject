@@ -54,7 +54,7 @@ class Applications {
         WHERE User.id = ?;"
         const results = await db.query(sql, [this.id]);
         for(var row of results) {
-            this.applications.push(new Applications(row.Company_Name, row.Job_Title, row.Location, row.Status, row.SubmissionDate, row.LastUpdate, row.Documents));
+            this.Applications.push(new Applications(row.Company_Name, row.Job_Title, row.Location, row.Status, row.SubmissionDate, row.LastUpdate, row.Documents));
         }
     }
 

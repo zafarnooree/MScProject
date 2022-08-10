@@ -24,8 +24,8 @@ block content
                         th Last Update |
                         th Documents |  
                     tr 
-                for applications in user.applications
-                    option(value= 'ApplicationDetails') #{applications.company_Name}
+                for Applications in User.Applications
+                    option(value= 'ApplicationDetails') #{Applications.Company_Name} #{Applications.Job_Title} #{Applications.Location} #{Applications.Status} #{Applications.SubmissionDate} #{Applications.LastUpdate} #{Applications.Documents}
     h3 Journal
         select
             option(value= 'Heading')

@@ -132,52 +132,9 @@ app.get("/user/:id", async function(req, res) {
     await user.getUserImage();
     await user.getUserApplications();
     await user.getUserJournal();
-    resultApplications = await getapplications.getAllApplications();
+    resultApplications = await getApplications.getAllApplications();
     res.render('user', {'User':user, 'Applications':resultApplications});
 });
-
-// Create route for the calendar
-// Here we have a page which demonstrates how to both input dates and display dates
-app.get("/user", async function(req, res) {
-    // Get all the dates from the db to display
-    // NB Move this to a model that is appropriate to your project
-    sql = "SELECT * from applications";
-    // We could format dates either in the template or in the backend
-    dates = [];
-    results = await db.query(sql);
-    // Loop through the results from the database
-    for (var row of results) {
-        // For some reason the dates are fomatted as jsDates. I think thats the Mysql2 library at work!
-        dt = DateTime.fromJSDate(row['date']);
-        // Format the date and push it to the row ready for the template
-        // NB Formatting could also be done in the template
-        // NB date formats are usually set up to work throughout your app, you would not usually set this in every row.
-        // you could put this in your model.
-        dates.push(dt.toLocaleString(DateTime.DATE_HUGE));
-    }
-    // Render the calendar template, injecting the dates array as a variable.
-    res.render('applications', {dates: dates});
-});
-
-// Capture the date input and save to the db
-app.post('/set-date', async function (req, res) {
-    params = req.body.date;
-    console.log(params);
-    //construct a date object from the submitted value - use a library
-    var inputDate = DateTime.fromFormat(params, 'yyyy-M-dd');
-    console.log(inputDate);
-    // Add the date: NB this should be in a model somewhere
-    sql = "INSERT into test_applications (date) VALUES (?)";
-    try {
-        await db.query(sql, [inputDate.toSQLDate()]);
-    } catch (err) {
-        console.error(`Error while adding date `, err.message);
-        res.send('sorry there was an error');
-    }
-    res.send('date added');
-});
-
-
 
 //**********************************************************************************
 
