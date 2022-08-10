@@ -94,7 +94,7 @@ app.post('/authenticate', async function (req, res) {
     params = req.body;
     var user = new User(params.email);
     try {
-        uId = await user.getIdFromEmail();
+        id = await user.getIdFromEmail();
         if (id) {
             match = await user.authenticate(params.password);
             if (match) {

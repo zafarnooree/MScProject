@@ -8,6 +8,7 @@ class Journal {
     J_ID;
     DayOfWeek;
     I_Notes;
+    Feedback;
 
     constructor(DayOfWeek, I_Notes, Feedback) {
         this.DayOfWeek = DayOfWeek;

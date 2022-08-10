@@ -3,3 +3,12 @@ Creating Database for the Applcation
 CREATE Database 'rTracker'
 
 CREATE TABLE `rTracker`.`Applications` ( `A_ID` INT NOT NULL AUTO_INCREMENT ,  `Company_Name` VARCHAR(90) NOT NULL ,  `Job_Title` VARCHAR(90) NOT NULL ,  `Location` VARCHAR(50) NOT NULL ,  `Status` VARCHAR(50) NOT NULL ,  `SubmissionDate` DATE NOT NULL ,  `LastUpdate` DATE NULL ,  `Documents` BLOB NULL ,    PRIMARY KEY  (`A_ID`)) ENGINE = InnoDB;
+
+//Populating the Applications table 
+
+INSERT INTO Applications VALUES ("101", "1", "LOreal", "Recruitment Coordinator", "Canterbury, Kent", "Submitted", "2020-10-11", "2020-12-22", NULL);
+INSERT INTO Applications VALUES ("102", "01", "Cisco Systems", "HR Analyist", "Southwark, London", "Under Consideration", "2021-05-19", "2021-10-22", null);
+INSERT INTO Applications VALUES ("103", "01", "Walt Disney Company", "Recruitment Consultant", "Dublin, Ireland", "Initial Interview Call Recieved", "2020-10-05", "2020-11-20", null);
+INSERT INTO Applications VALUES ("104", "01", "The Upex Group", "Talent Hunter", "Sheffield, London", "Submitted", "2020-10-11", null, null);
+INSERT INTO Applications VALUES ("105", "01", "Deloitte", "HR team Coordinator", "Canterbury, Kent", "Waiting for Interview Outcome", "2020-10-11", "2020-10-22", null);
+INSERT INTO Applications VALUES ("106", "01", "CIPD", "HR Consultant", "Wimbledon, London", "Submitted", "2021-02-11", null, null)
