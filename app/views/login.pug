@@ -3,9 +3,11 @@ block content
     header Log In To Your Existing Account
     h7 
         form(action='/authenticate' method='POST')
-                p 
+                div    
                  | Email: 
                  input(type="text",name="email",value='')
                  |  Password: 
                  input(type="text",name="password",value='')
                 input(type="submit", value="Submit")
+                .email 
+                    a(href='#') Forgot password?

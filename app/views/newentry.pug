@@ -3,25 +3,40 @@ block content
 
     header Add a New Job Application Entry
     h11 
-   
-                form(action='/newentry' method='POST') 
-                    th
-                        label(for='Company_Name') Please enter the name of the company: 
-                        input('name'='Company_Name')
-                    th 
-                        label(for='Job_Title') Please enter the job title: 
-                        input('name'='Job_Title')
-                    th 
-                        label(for='Location') Please enter the work location: 
-                        input('name'='Location')
-                    th
-                        label(for='Status') Select the application status: 
-                        input('name'='Status')
-                    th 
-                        label(for='SubmissionDate') Add the date you submitted the application: 
-                        input('name'='SubmissionDate')
-                    th 
-                        label(for='LastUpdate') Add the date you last had any interaction with the recruiter: 
-                        input('name'='LastUpdate')
-                    input(type='submit' value='Submit')
-            tr
+        form(action='/newentry' method='POST')    
+                tr
+                    | Please enter the name of the company:
+                    //label(for='Company_Name')  
+                    input('name'='Company_Name')
+                tr 
+                    | Please enter the job title: 
+                    //label(for='Job_Title') 
+                    input('name'='Job_Title')
+                tr 
+                    | Please enter the work location:
+                    //label(for='Location') 
+                    input('name'='Location')
+                tr
+                    | Select the application status:
+                    //label(for='Status')  
+                    select#status('name'='Status')
+                     option Choose Current status
+                     option(value='Submitted') Submitted
+                     option(value='Under Consideration') Under Consideration
+                     option(value='Initial Interview Call Recieved') Initial Interview Call Recieved
+                     option(value='Second Interview Call Recieved') Second Interview Call Recieved
+                     option(value='Waiting for Interview Outcome') Waiting for Interview Outcome
+                tr 
+                    | Add the date you submitted the application:
+                    //label(for='SubmissionDate')  
+                    input('name'='SubmissionDate')
+                tr 
+                    | Add the date you last had any interaction with the recruiter:
+                    //label(for='LastUpdate')  
+                    input('name'='LastUpdate')
+                tr 
+                    //file upload button
+                    | Documents
+                    label(for='actual-btn') 
+                    input#actual-btn(type='file') 
+                input(type='submit' value='Submit')

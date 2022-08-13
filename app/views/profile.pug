@@ -4,10 +4,15 @@ block content
     title= "Profile Page"
 
     body 
-    h1 #{heading}
+    h1 #{user.Name}
+        
+    p Click on the "Choose File" button to upload a file:
     img(src='/images/.png' width='200px' height='360px')
-    div.name
-    h2 My Profile
+    form(action='/profile_photo' method='POST')
+        input#myFile(type='file' name='filename')
+       input(type='submit')
+
+    h2 Select to View
         select(name="view_all")
             option(value=1) Select
             option(value=2) Applications

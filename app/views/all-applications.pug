@@ -1,11 +1,14 @@
 extends layout
 block content
+    header All Applications 
+        div.p7
+            a.btn(href='/newentry') + Add New Application
+ 
     - console.log(data)
-    .main-content
-
-    div.list All Applications
+    //.main-content
+    //div.list All Applications
     div.All-Applications
-        table(border=1)
+        table.tbl-style(border=3)
             tr 
                 th Application ID 
                 th Company Name 
@@ -18,18 +21,11 @@ block content
             tr 
                 for item in data
                     tr
-                        td #{item.A_ID}
-                        td
-                            a(href='/user/' + item.A_ID) #{item.Company_Name} 
-                        td
-                            a(href='/user/' + item.A_ID) #{item.Job_Title}
-                        td
-                            a(href='/user/' + item.A_ID) #{item.Location}
-                        td
-                            a(href='/user/' + item.A_ID) #{item.Status}
-                        td
-                            a(href='/user/' + item.A_ID) #{item.SubmissionDate}
-                        td
-                            a(href='/user/' + item.A_ID) #{item.LastUpdate}
-                        td
-                            a(href='/user/' + item.A_ID) #{item.Documents}
+                        td #{item.A_ID} 
+                        td #{item.Company_Name} 
+                        td #{item.Job_Title}
+                        td #{item.Location}
+                        td #{item.Status}
+                        td #{item.SubmissionDate}
+                        td #{item.LastUpdate}
+                        td #{item.Documents}

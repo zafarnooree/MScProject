@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 //Get the models
 //const { Applications } = require("./models/applications");
 const { User } = require("./models/user");
+const { Applications } = require("./models/applications");
 
 // Create a route for root - /
 app.get("/", function(req, res) {
@@ -32,15 +33,15 @@ app.get('/homepage', function (req, res) {
     res.render('homepage');
 });
 
-// Create a route for 'index'
-app.get("/index", function(req, res) {
-    res.render("index",
+// Create a route for 'profile page'
+app.get("/profile", function(req, res) {
+    res.render("profile",
         {'title':'Profile Page', 'heading': 'heading'});
 });
 
 // Create a route for testing the db
 app.get("/all-applications", function(req, res) {
-    // Prepare an SQL query that will return all rows from the teacher_table
+    // Prepare an SQL query that will return all rows from the applications_table
     var sql = 'select * from Applications';
     db.query(sql).then(results => {
         res.render('all-applications', {data:results});
@@ -90,8 +91,10 @@ app.get('/newentry', function (req, res) {
 });
 
 //Route to recieve new entry form posting
-app.post('/newentry', function (req, res) {
-    console.log('code here to add to the database');
+app.post('/newentry', async function (req, res) {
+    params = req.body;
+    var newapp = new Applications(params.Company_Name, params.Job_Title, params.Location, params.Status, params.SubmissionDate, params.LastUpdate, params.Documents)
+    console.log(params.A_ID);
 
 });
 
