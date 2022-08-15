@@ -1,13 +1,16 @@
 extends layout
 block content
-    header Log In To Your Existing Account
-    h7 
+
+    header.style1 Log In To Your Existing Account 
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
+
+    h11 
         form(action='/authenticate' method='POST')
                 div    
                  | Email: 
                  input(type="text",name="email",value='')
                  |  Password: 
                  input(type="text",name="password",value='')
-                input(type="submit", value="Submit")
+                input(type="submit", value="Log In")
                 .email 
                     a(href='#') Forgot password?

@@ -1,20 +1,21 @@
 extends layout 
 block content
-    head 
-    title= "Profile Page"
 
-    body 
-    h1 #{user.Name}
-        
-    p Click on the "Choose File" button to upload a file:
-    img(src='/images/.png' width='200px' height='360px')
-    form(action='/profile_photo' method='POST')
-        input#myFile(type='file' name='filename')
-       input(type='submit')
+    header.style1 Profile Page
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
 
-    h2 Select to View
-        select(name="view_all")
-            option(value=1) Select
-            option(value=2) Applications
-            option(value=3) Journal
-    h3 Calender 
+    //h1 #{user.Name}  
+    //div.p1 Click on the "Choose File" button to upload a file:
+    //img(src= user.image_path width='200px' height='360px')
+    form.profilepic(action='/profile_photo' method='POST')
+            div.p1 
+             input#myFile(type='file' name='filename')
+            input(type='submit')
+
+    div.dropdown 
+        div.dropbtn Select to View
+        div.dropdown-content 
+            a.dropdown-content(href='/all-applications') Applications
+            a.dropdown-content(href='/journal') Journal
+
+    div.p3 Calender View

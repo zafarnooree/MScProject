@@ -1,9 +1,10 @@
 extends layout 
 block content 
+    header.style1 Add a New Job Application Entry
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
 
-    header Add a New Job Application Entry
-    h11 
-        form(action='/newentry' method='POST')    
+    h12  
+        form.newentry(action='/newentry' method='POST')    
                 tr
                     | Please enter the name of the company:
                     //label(for='Company_Name')  
@@ -29,11 +30,11 @@ block content
                 tr 
                     | Add the date you submitted the application:
                     //label(for='SubmissionDate')  
-                    input('name'='SubmissionDate')
+                    input(type='date', name ='SubmissionDate')
                 tr 
                     | Add the date you last had any interaction with the recruiter:
                     //label(for='LastUpdate')  
-                    input('name'='LastUpdate')
+                    input(type='date', name ='LastUpdate')
                 tr 
                     //file upload button
                     | Documents

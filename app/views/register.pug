@@ -1,15 +1,16 @@
 extends layout
 block content
-    header Register here
 
+    header.style1 Register Here
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
+     
+    h11 
         form(action='/set_password' method='POST') 
-                h7  
+                div  
                  | Register with your Email: 
                  input(type="text",name="email",value='')
-                h8
                  | Username: 
                  input(type="text",name="name",value='')
-                h9
                  | Password: 
                  input(type="text",name="password",value='')
-                input.rbtn(type="submit", value="Submit")
+                input.rbtn(type="submit", value="Register")

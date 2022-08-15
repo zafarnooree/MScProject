@@ -1,0 +1,16 @@
+extends layout
+block content
+
+    header.style1 My Journal
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
+    div
+        select
+            option(value= 'Heading')
+                table
+                    tr
+                        th Day of Week | 
+                        th I_Notes | 
+                        th Feedback |
+                    tr 
+                for journal in user.journal
+                    option(value= 'JournalDetails') #{journal.DayOfWeek} | #{journal.I_Notes} | #{journal.Feedback}

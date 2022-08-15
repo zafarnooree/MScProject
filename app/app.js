@@ -24,7 +24,7 @@ const { User } = require("./models/user");
 const { Applications } = require("./models/applications");
 
 // Create a route for root - /
-app.get("/", function(req, res) {
+app.get('/', function(req, res) {
     res.render('homepage');
 });
 
@@ -33,14 +33,18 @@ app.get('/homepage', function (req, res) {
     res.render('homepage');
 });
 
-// Create a route for 'profile page'
-app.get("/profile", function(req, res) {
-    res.render("profile",
-        {'title':'Profile Page', 'heading': 'heading'});
+// Create a route for 'profile.pug'
+app.get('/profile', function (req, res) {
+    res.render('profile');
+});
+
+// Create a route for 'journal.pug'
+app.get('/journal', function (req, res) {
+    res.render('journal');
 });
 
 // Create a route for testing the db
-app.get("/all-applications", function(req, res) {
+app.get('/all-applications', function(req, res) {
     // Prepare an SQL query that will return all rows from the applications_table
     var sql = 'select * from Applications';
     db.query(sql).then(results => {
@@ -53,11 +57,6 @@ app.get('/register', function (req, res) {
     res.render('register');
 });
 
-// Route for 'account.pug'
-app.get('/account', function (req, res) {
-    res.render('account');
-});
-
 // Set password route
 app.post('/set_password', async function (req, res) {
     params = req.body;
@@ -68,12 +67,12 @@ app.post('/set_password', async function (req, res) {
         if (id) {
             // If a valid, existing user is found, set the password and redirect to the users profile page
             await user.setUserPassword(params.password);
-            res.redirect('/user/' + id);
+            res.redirect('/profile/' + id);
         }
         else {
             // If no existing user is found, add a new one
             newId = await user.addUser(params.password);
-            res.send('Perhaps a page where a new user sets a programme would be good here');
+            res.send('register');
         }
     } catch (err) {
         console.error(`Error while adding password `, err.message);
@@ -112,7 +111,7 @@ app.post('/authenticate', async function (req, res) {
                 req.session.id = id;
                 req.session.loggedIn = true;
                 console.log(req.session);
-                res.redirect('/user/' + id);
+                res.redirect('/profile/' + id);
             }
             else {
                 // Checking the validity of the password
