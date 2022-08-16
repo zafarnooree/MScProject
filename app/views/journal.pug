@@ -1,16 +1,19 @@
 extends layout
 block content
 
-    header.style1 My Journal
+    header.style1 My Journal (Incomplete)
      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
-    div
-        select
-            option(value= 'Heading')
-                table
-                    tr
-                        th Day of Week | 
-                        th I_Notes | 
-                        th Feedback |
-                    tr 
-                for journal in user.journal
-                    option(value= 'JournalDetails') #{journal.DayOfWeek} | #{journal.I_Notes} | #{journal.Feedback}
+
+    div.p7 (Create a link to add new feedback according to date and specific application)
+            a.btn(href='/journal') + Add New Feedback To Your Journal 
+
+    - console.log(data)
+    div.All-Applications
+        table.tbl-style(border=3)
+            tr 
+                th Day Of Week
+                th Application No.
+                th I_Notes 
+                th Feedback 
+            tr 
+

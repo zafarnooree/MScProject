@@ -3,22 +3,38 @@ block content
     header.style1 Add a New Job Application Entry
      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
 
+    script.
+        function validateForm() {
+        var x = document.forms["Company_Name"]["Job_Title"]["Location"]["Status"]["SubmissionDate"].value;
+        if (x == "" || x == null) {
+        alert("Please fill the empty field");
+        return false;
+        } return true;
+        }
+
     h12  
-        form.newentry(action='/newentry' method='POST')    
+        form.newentry(action='/newentry' onsubmit='return validateForm()' method='POST')    
                 tr
                     | Please enter the name of the company:
+                    <br><br>
                     //label(for='Company_Name')  
                     input('name'='Company_Name')
+                    <br><br>
                 tr 
-                    | Please enter the job title: 
+                    | Please enter the job title:
+                    <br><br> 
                     //label(for='Job_Title') 
                     input('name'='Job_Title')
+                    <br><br>
                 tr 
                     | Please enter the work location:
+                    <br><br>
                     //label(for='Location') 
                     input('name'='Location')
+                    <br><br>
                 tr
                     | Select the application status:
+                    <br><br>
                     //label(for='Status')  
                     select#status('name'='Status')
                      option Choose Current status
@@ -27,17 +43,24 @@ block content
                      option(value='Initial Interview Call Recieved') Initial Interview Call Recieved
                      option(value='Second Interview Call Recieved') Second Interview Call Recieved
                      option(value='Waiting for Interview Outcome') Waiting for Interview Outcome
+                    <br><br>
                 tr 
                     | Add the date you submitted the application:
+                    <br><br>
                     //label(for='SubmissionDate')  
                     input(type='date', name ='SubmissionDate')
+                    <br><br>
                 tr 
                     | Add the date you last had any interaction with the recruiter:
+                    <br><br>
                     //label(for='LastUpdate')  
                     input(type='date', name ='LastUpdate')
+                    <br><br>
                 tr 
                     //file upload button
                     | Documents
+                    <br><br>
                     label(for='actual-btn') 
-                    input#actual-btn(type='file') 
+                    input#actual-btn(type='file')
+                    <br><br> 
                 input(type='submit' value='Submit')

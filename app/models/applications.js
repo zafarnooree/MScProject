@@ -1,11 +1,12 @@
 const db = require('../services/db');
 const { User } = require('./user');
 const { Journal } = require('./journal');
+const { compare } = require('bcryptjs');
 
 
 class Applications {
     // Attributes
-    A_ID;
+    User_id;
     Company_Name;
     Job_Title;
     Location;
@@ -14,8 +15,15 @@ class Applications {
     LastUpdate;
     Documents = [];
 
-    constructor(A_ID) {
-        this.A_ID = A_ID;
+    constructor(User_id,Company_Name, Job_Title, Location, Status, SubmissionDate, LastUpdate) {
+        //this.A_ID = A_ID;
+        this.User_id=User_id;
+        this.Company_Name=Company_Name;
+        this.Job_Title=Job_Title;
+        this.Location=Location;
+        this.Status=Status;
+        this.SubmissionDate=SubmissionDate;
+        this.LastUpdate=LastUpdate;
     }
 
     //Get the user name from the database
@@ -68,6 +76,14 @@ class Applications {
             this.journal.push(new Journal(row.DayOfWeek, row.I_Notes, row.Feedback));
         }
 
+        
+    }
+    async addApplication() {
+        var sql = "INSERT INTO Applications (id,Company_Name, Job_Title, Location, Status, submissionDate, LastUpdate, Documents) VALUES (? , ? , ? , ? , ? , ? , ?)";
+        const result = await db.query(sql, [this.User_id,this.Company_Name,this.Job_Title, this.Location, this.Status, this.SubmissionDate, this.LastUpdate, this.Documents]);
+        console.log(result.insertId);
+        this.id = result.insertId;
+        return this.id;
     }
 
 }

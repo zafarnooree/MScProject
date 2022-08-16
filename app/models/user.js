@@ -19,9 +19,12 @@ class User {
     }
     
     // Get an existing user id from an email address, or return false if not found
-    async getIdFromEmail()  {
+    async getIdFromEmail(email)  {
+
         var sql = "SELECT id FROM User WHERE email = ?";
-        const result = await db.query(sql, [this.email]);
+        console.log(sql);
+        const result = await db.query(sql, [email]);
+        console.log(email);
         // TO DO LOTS OF ERROR CHECKS HERE..
         if (JSON.stringify(result) != '[]') {
             this.id = result[0].id;
@@ -35,8 +38,9 @@ class User {
     // Add a password to an existing user
     async setUserPassword(password) {
         const pw = await bcrypt.hash(password, 10);
+        console.log(pw);
         var sql = "UPDATE User SET Password = ? WHERE id = ?"
-        const result = await db.query(sql, [pw, this.id]);
+        const result = await db.query(sql, [password, this.id]);
         return true;
     }
     
@@ -44,6 +48,7 @@ class User {
     async addUser(password) {
         const pw = await bcrypt.hash(password, 10);
         var sql = "INSERT INTO User (Name,email, password) VALUES (? , ? , ?)";
+        console.log(pw);
         const result = await db.query(sql, [this.Name,this.email, password]);
         console.log(result.insertId);
         this.id = result.insertId;
@@ -51,18 +56,13 @@ class User {
     }
 
     // Test a submitted password against a stored password
-    async authenticate(submitted) {
+    async authenticate(user_pass,email) {
         // Get the stored, hashed password for the user
-        var sql = "SELECT password FROM User WHERE id = ?";
-        const result = await db.query(sql, [this.id]);
-        const match = await bcrypt.compare(submitted, result[0].password);
-        if (match == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+        var sql = "SELECT password FROM User WHERE email = ?";
+        var  result =  await db.query(sql, [email]);
+        const match = await user_pass == result[0].password? true: false;
+        return match;
+   }
 }
 
 module.exports  = {
