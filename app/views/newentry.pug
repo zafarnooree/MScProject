@@ -3,6 +3,7 @@ block content
     header.style1 Add a New Job Application Entry
      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
 
+    //Asking user to fill the required fields of the 'newentry' form.
     script.
         function validateForm() {
         var x = document.forms["Company_Name"]["Job_Title"]["Location"]["Status"]["SubmissionDate"].value;
@@ -12,6 +13,7 @@ block content
         } return true;
         }
 
+    //New Application's entry form.
     h12  
         form.newentry(action='/newentry' onsubmit='return validateForm()' method='POST')    
                 tr
@@ -61,6 +63,6 @@ block content
                     | Documents
                     <br><br>
                     label(for='actual-btn') 
-                    input#actual-btn(type='file')
+                    input#actual-btn(type='file', name="Documents")
                     <br><br> 
                 input(type='submit' value='Submit')

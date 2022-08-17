@@ -59,9 +59,9 @@ class User {
     async authenticate(user_pass,email) {
         // Get the stored, hashed password for the user
         var sql = "SELECT password FROM User WHERE email = ?";
-        var  result =  await db.query(sql, [email]);
-        const match = await user_pass == result[0].password? true: false;
-        return match;
+        var  result =  await db.query(sql, [email]);//.then(results => {return results[0].password});
+        console.log(result[0].password);
+        return result[0].password==user_pass;
    }
 }
 

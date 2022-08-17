@@ -1,13 +1,29 @@
 // Import express.js
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
+const http = require('http');
+
+    
 // Create express app
 var app = express();
+var logged_id;
 // Add static files location
 app.use(express.static("static"));
-
+const router =express.Router();
+const oneDay = 1000 * 60 * 60 * 24;
 // Use the Pug templating engine
 app.set('view engine', 'pug');
 app.set('views', './app/views');
+app.use(sessions({
+    secret: "thisismysecrctekey",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false
+    }));
+    
+    app.use(cookieParser());
+    
 
 // Add the luxon date formatting library
 //const { DateTime } = require("luxon");
@@ -39,8 +55,10 @@ app.get('/search', function (req, res) {
 });
 
 // Create a route for 'profile.pug'
-app.get('/profile', function (req, res) {
-    res.render('profile');
+app.get('/profile/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    res.render('profile', {data:id});
 });
 
 // Create a route for 'journal.pug'
@@ -75,13 +93,13 @@ app.post('/set_password', async function (req, res) {
             // If a valid, existing user is found, set the password and redirect to the users profile page
             await user.setUserPassword(params.password);
             user.id=id;
-            res.redirect('/homepage');
+            res.redirect('/profile' + id);
         }
         else {
             // If no existing user is found, add a new one
             newId = await user.addUser(params.password);
             user.id=newId;
-            res.send('/homepage');
+            res.send('/profile');
         }
     } catch (err) {
         console.error(`Error while adding password `, err.message);
@@ -101,13 +119,15 @@ app.get('/newentry', function (req, res) {
 //Route to recieve new entry form posting
 app.post('/newentry', async function (req, res) {
     params = req.body;
-    console.log(user.id);
-    var newapp = new Applications(user.id,params.Company_Name, params.Job_Title, params.Location, params.Status, params.SubmissionDate, params.LastUpdate)
-    var result=newapp.addApplication();
+    console.log(req.session.id);
+    var id=logged_id;
+    console.log(id);
+    var newapp = new Applications(id,params.Company_Name, params.Job_Title, params.Location, params.Status, params.SubmissionDate, params.LastUpdate,params)
+    var result=await newapp.addApplication();
     console.log("Applicaiton added successfully");
     console.log(result);
     //alert("Application information added successfully.");
-    res.redirect("/all-applications/:id");
+    res.redirect("/all-applications/"+ id);
 
 });
 
@@ -122,12 +142,17 @@ app.post('/authenticate', async function (req, res) {
         console.log(id);
         if (id) {
             match = await user.authenticate(params.password,params.email);
+            console.log(match);
             if (match) {
                 // Set the session for the user
+                //console.log(req.session);
                 req.session.id = id;
+                logged_id=id;
+                console.log(req.session.id);
+                console.log("Id Set ");
                 req.session.loggedIn = true;
-                console.log(req.session);
-                res.redirect('/profile/:id');
+                //console.log(req.session);
+                res.redirect('/profile/' + id);
             }
             else {
                 // Checking the validity of the password

@@ -15,7 +15,7 @@ class Applications {
     LastUpdate;
     Documents = [];
 
-    constructor(User_id,Company_Name, Job_Title, Location, Status, SubmissionDate, LastUpdate) {
+    constructor(User_id,Company_Name, Job_Title, Location, Status, SubmissionDate, LastUpdate,Documents) {
         //this.A_ID = A_ID;
         this.User_id=User_id;
         this.Company_Name=Company_Name;
@@ -24,6 +24,7 @@ class Applications {
         this.Status=Status;
         this.SubmissionDate=SubmissionDate;
         this.LastUpdate=LastUpdate;
+        this.Documents=Documents;
     }
 
     //Get the user name from the database
@@ -79,7 +80,8 @@ class Applications {
         
     }
     async addApplication() {
-        var sql = "INSERT INTO Applications (id,Company_Name, Job_Title, Location, Status, submissionDate, LastUpdate, Documents) VALUES (? , ? , ? , ? , ? , ? , ?)";
+        var sql = "INSERT INTO Applications (id,Company_Name, Job_Title, Location, Status, submissionDate, LastUpdate, Documents) VALUES (? , ? , ? , ? , ? , ? , ?,?)";
+        console.log(this.User_id);
         const result = await db.query(sql, [this.User_id,this.Company_Name,this.Job_Title, this.Location, this.Status, this.SubmissionDate, this.LastUpdate, this.Documents]);
         console.log(result.insertId);
         this.id = result.insertId;

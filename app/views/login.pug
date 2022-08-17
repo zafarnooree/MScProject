@@ -4,15 +4,17 @@ block content
     header.style1 Log In To Your Existing Account 
      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
 
+    //Asking user to fill the required fields.
     script.
         function validateForm() {
         var x = document.forms["email"]["password"].value;
         if (x == "" || x == null) {
-        alert("Please fill the empty field");
+        alert("Email or Password is missing.");
         return false;
         }
         }
 
+    //Login with authentication.
     h11 
         form(action='/authenticate' onsubmit='return validateForm()' method='POST')
                 div    
