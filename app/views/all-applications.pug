@@ -29,4 +29,5 @@ block content
                         td #{item.Status}
                         td #{item.SubmissionDate}
                         td #{item.LastUpdate}
-                        td #{item.Documents}
+                        td 
+                            a(href='/viewfile/' + item.A_ID) #{item.Filename}

@@ -288,6 +288,17 @@ h13 {
   align-items: center;
 }
 
+h14 {
+  white-space: nowrap;
+  position: absolute;
+  text-align: center;
+  margin-left: 1300;
+  padding: 91px;
+  font-family: Helvetica;
+  font-style: oblique;
+  margin-top: -150
+}
+
 .pic {
     margin-left: 100;
     margin-top: 130;

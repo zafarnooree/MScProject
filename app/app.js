@@ -3,18 +3,20 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 const http = require('http');
+const fileUpload = require('express-fileupload');
 
-    
+
+
 // Create express app
 var app = express();
 var logged_id;
 // Add static files location
 app.use(express.static("static"));
+app.use(fileUpload());
+
+// Session authentication router
 const router =express.Router();
 const oneDay = 1000 * 60 * 60 * 24;
-// Use the Pug templating engine
-app.set('view engine', 'pug');
-app.set('views', './app/views');
 app.use(sessions({
     secret: "thisismysecrctekey",
     saveUninitialized:true,
@@ -23,10 +25,13 @@ app.use(sessions({
     }));
     
     app.use(cookieParser());
-    
+
+// Use the Pug templating engine
+app.set('view engine', 'pug');
+app.set('views', './app/views');
 
 // Add the luxon date formatting library
-//const { DateTime } = require("luxon");
+const { DateTime } = require("luxon");
 
 //***********************************************************************************
 
@@ -69,6 +74,7 @@ app.get('/journal', function (req, res) {
 // Create a route for testing the db
 app.get('/all-applications/:id', function(req, res) {
     var id = req.params.id;
+    console.log("this function is called.");
     // Prepare an SQL query that will return all rows from the applications_table
     var sql = 'select * from Applications Where id = ?';
     db.query(sql,[id]).then(results => {
@@ -88,18 +94,20 @@ app.post('/set_password', async function (req, res) {
     user = new User(params.name,params.email);
     console.log(params.email);
     try {
-        id = await user.getIdFromEmail();
+        id = await user.getIdFromEmail(params.email);
+        console.log(id);
         if (id) {
             // If a valid, existing user is found, set the password and redirect to the users profile page
             await user.setUserPassword(params.password);
             user.id=id;
-            res.redirect('/profile' + id);
+            res.redirect('/profile/' + id);
         }
         else {
             // If no existing user is found, add a new one
             newId = await user.addUser(params.password);
             user.id=newId;
-            res.send('/profile');
+            console.log(newId)
+            res.redirect('/profile/' + newId);
         }
     } catch (err) {
         console.error(`Error while adding password `, err.message);
@@ -111,6 +119,14 @@ app.get('/login', function (req, res) {
     res.render('login');
 });
 
+// Route for Logout
+app.get('/logout', function (req, res) {
+    //req.session = null //Deletes session cookie.
+    //Deletes the session from the database.
+    req.session.destroy(); 
+    res.redirect('/homepage');
+  });
+
 // Route for 'newentry.pug'
 app.get('/newentry', function (req, res) {
     res.render('newentry');
@@ -120,10 +136,22 @@ app.get('/newentry', function (req, res) {
 app.post('/newentry', async function (req, res) {
     params = req.body;
     console.log(req.session.id);
+    var fileName;
+    var fileData;
+    console.log(req.files.Documents);
+    fileName=req.files.Documents.name;
+    fileData=req.files.Documents.data;
+    console.log("File DAta is: ");
+    console.log(fileData);
+    console.log(fileName);
     var id=logged_id;
     console.log(id);
-    var newapp = new Applications(id,params.Company_Name, params.Job_Title, params.Location, params.Status, params.SubmissionDate, params.LastUpdate,params)
-    var result=await newapp.addApplication();
+    console.log(params.LastUpdate);
+    if(params.LastUpdate==''){
+        params.LastUpdate=null;
+    }
+    var newapp = new Applications(id,params.Company_Name, params.Job_Title, params.Location, params.Status, params.SubmissionDate, params.LastUpdate,fileName);
+    var result=await newapp.addApplication(fileData);
     console.log("Applicaiton added successfully");
     console.log(result);
     //alert("Application information added successfully.");
@@ -168,12 +196,6 @@ app.post('/authenticate', async function (req, res) {
     }
 });
 
-// Route for Logout
-app.get('/logout', function (req, res) {
-    req.session.destroy();
-    res.redirect('/login');
-  });
-
 app.get("/all-applications/:id", async function(req, res) {
     var id = req.params.id;
     //Create a user profile with ID passed
@@ -185,6 +207,48 @@ app.get("/all-applications/:id", async function(req, res) {
     resultApplications = await getApplications.getAllApplications();
     res.render('user', {'User':user, 'Applications':resultApplications});
 });
+// var saveData = (function () {
+//     var a = document.createElement("a");
+//     document.body.appendChild(a);
+//     a.style = "display: none";
+//     return function (data, fileName) {
+//         var json = JSON.stringify(data),
+//             blob = new Blob([json], {type: "octet/stream"}),
+//             url = window.URL.createObjectURL(blob);
+//         a.href = url;
+//         a.download = fileName;
+//         a.click();
+//         window.URL.revokeObjectURL(url);
+//     };
+// }());
+app.get("/viewfile/:id", async function(req, res) {
+    var id = req.params.id;
+    console.log(id);
+    var sql = 'select Documents,Filename from Applications Where A_ID = ?';
+    var document;
+    var fileName;
+    db.query(sql,[id]).then(results => {
+        document=results.Documents;
+        fileName= results.Filename;  
+        console.log(fileName);
+        console.log(document);
+    });
+    //saveData(document,fileName);
+});
+
+app.get("/viewfile1/:id", async function(req, res) {
+    var id = req.params.id;
+    console.log(id);
+    var sql = 'select Documents,Filename from Applications Where A_ID = ?';
+    db.query(sql,[id]).then(results => {
+       //res.setHeader("Content=Lenght",results.Documents.length);
+       res.write(results.Documents,'binary');
+       res.end(); 
+    
+    });
+});
+
+
 
 //**********************************************************************************
 

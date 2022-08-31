@@ -1,4 +1,4 @@
-Login & Register (authentication & redirection errors)
+incomplete pages
 Profile page incomplete. (Working on allowing users to upload a profile photo from their device.)
 Journal page incomplete. 
 
@@ -86,3 +86,40 @@ div(style='padding-left:16px')
   h2 Responsive Search Bar
   p Navigation bar with a search box and a submit button inside of it.
   p Resize the browser window to see the responsive effect.
+
+
+  Library installation guide:
+
+  npm install
+  npm install express
+  npm i express
+  npm install express-session
+  npm install mysql2
+  npm install nodemon -g  
+  npm install nodemon --save-dev
+  npm install supervisor
+  npm install -g supervisor 
+  npm install supervisor -g
+  sudo npm install supervisor -g 
+  npm install node-static 
+  npm install node-gyp
+  npm install node-gyp -g
+  nodemon express_server.js
+  npm run devStart 
+  npm install -g n 
+  npm i -g surge
+  sudo npm i -g surge 
+  npm init
+  npm update
+  npm install pug
+  npm install bcrypt 
+  npm install bcryptjs -g  
+  npm install bcryptjs
+  npm install bcryptjs --save  
+  npm install luxon
+  npm install dotenv  
+  npm i --save-dev nodemon dotenv
+  npm install body-parser
+  npm audit fix --force   
+  npm install express express-session cookie-parser
+  npm install express-fileupload

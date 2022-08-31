@@ -15,7 +15,7 @@ block content
 
     //New Application's entry form.
     h12  
-        form.newentry(action='/newentry' onsubmit='return validateForm()' method='POST')    
+        form.newentry(action='/newentry' onsubmit='return validateForm()' method='POST' enctype="multipart/form-data")    
                 tr
                     | Please enter the name of the company:
                     <br><br>

@@ -13,9 +13,10 @@ class Applications {
     Status = [];
     SubmissionDate;
     LastUpdate;
-    Documents = [];
+    DocumentName;
+    DocumentData;
 
-    constructor(User_id,Company_Name, Job_Title, Location, Status, SubmissionDate, LastUpdate,Documents) {
+    constructor(User_id,Company_Name, Job_Title, Location, Status, SubmissionDate, LastUpdate,DocumentName) {
         //this.A_ID = A_ID;
         this.User_id=User_id;
         this.Company_Name=Company_Name;
@@ -24,7 +25,8 @@ class Applications {
         this.Status=Status;
         this.SubmissionDate=SubmissionDate;
         this.LastUpdate=LastUpdate;
-        this.Documents=Documents;
+        this.DocumentName=DocumentName;
+       
     }
 
     //Get the user name from the database
@@ -56,14 +58,14 @@ class Applications {
 
     //Get the application details for the user
     async getUserApplications() {
-        var sql = "SELECT Applications.A_ID, Applications.Company_Name, Applications.Job_Title, Applications.Location, Applications.Status, Applications.SubmissionDate, Applications.LastUpdate, Applications.Documents, \
+        var sql = "SELECT Applications.A_ID, Applications.Company_Name, Applications.Job_Title, Applications.Location, Applications.Status, Applications.SubmissionDate, Applications.LastUpdate, Applications.Filename, \
         FROM Applications \
         JOIN Applications ON Applications.id = User.id \
         JOIN Journal ON Journal.A_ID = Applications.A_ID \
         WHERE User.id = ?;"
         const results = await db.query(sql, [this.id]);
         for(var row of results) {
-            this.Applications.push(new Applications(row.Company_Name, row.Job_Title, row.Location, row.Status, row.SubmissionDate, row.LastUpdate, row.Documents));
+            this.Applications.push(new Applications(row.Company_Name, row.Job_Title, row.Location, row.Status, row.SubmissionDate, row.LastUpdate, row.Filename));
         }
     }
 
@@ -79,10 +81,10 @@ class Applications {
 
         
     }
-    async addApplication() {
-        var sql = "INSERT INTO Applications (id,Company_Name, Job_Title, Location, Status, submissionDate, LastUpdate, Documents) VALUES (? , ? , ? , ? , ? , ? , ?,?)";
+    async addApplication(fileData) {
+        var sql = "INSERT INTO Applications (id,Company_Name, Job_Title, Location, Status, submissionDate, LastUpdate, Documents,Filename) VALUES (? , ? , ? , ? , ? , ? , ?,?,?)";
         console.log(this.User_id);
-        const result = await db.query(sql, [this.User_id,this.Company_Name,this.Job_Title, this.Location, this.Status, this.SubmissionDate, this.LastUpdate, this.Documents]);
+        const result = await db.query(sql, [this.User_id,this.Company_Name,this.Job_Title, this.Location, this.Status, this.SubmissionDate, this.LastUpdate, fileData,this.DocumentName]);
         console.log(result.insertId);
         this.id = result.insertId;
         return this.id;
