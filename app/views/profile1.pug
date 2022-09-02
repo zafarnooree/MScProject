@@ -1,0 +1,160 @@
+extends layout 
+block content
+
+    header.style1 Profile Page
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
+
+    //h1     
+        a.hbtn(herf='/search' class="search")
+        .flex.items-center.justify-center.w-screen.h-screen.bg-gray-800
+            form(method='GET')
+                .relative.text-gray-600(class='focus-within:text-gray-400')
+                span.absolute.inset-y-0.left-0.flex.items-center.pl-2
+                    button.p-1(type='submit' class='focus:outline-none focus:shadow-outline')
+                    svg.w-6.h-6(fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewbox='0 0 24 24')
+                        path(d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z')
+                input.py-2.text-sm.text-white.bg-gray-900.rounded-md.pl-10(type='search' name='q' class='focus:outline-none focus:bg-white focus:text-gray-900' placeholder='Search...' autocomplete='off')
+
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    }
+
+    li {
+    float: left;
+    }
+
+    li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+
+    li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+    }
+
+    li.dropdown {
+    display: inline-block;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    }
+
+    .dropdown-content a:hover {background-color: #f1f1f1;}
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+    </style>
+    </head>
+    <body>
+
+    <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+        <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        </div>
+    </li>
+    </ul>
+
+    //p #{user.Name}
+    //div.p1 Click on the "Choose File" button to upload a file:
+    //img(src= user.image_path width='200px' height='360px')
+    form.profilepic(action='/profile_photo' method='POST')
+            div.p1 
+             input#myFile(type='file' name='filename')
+            input(type='submit')
+
+    div.dropdown 
+        div.dropbtn Select to View
+        div.dropdown-content 
+            a.dropdown-content(href='/all-applications/'+data) Applications
+            a.dropdown-content(href='/journal') Journal
+
+    div.p3 Calender View
+
+/* Style The Dropdown Button */
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3670c2;
+    display: inline-block;
+    width: 100px;
+    border-color: #3670c2;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    max-height:150px; 
+    overflow-x:hidden; 
+    overflow-y:auto;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+.dropdown {
+display: inline-block;
+z-index: 1000;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+text-align: center;
+background-color: #749ed9;
+box-shadow: none;
+box-sizing: border-box;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+font-size: small;
+font-weight: 700;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    border-left: 3px solid blue;
+}

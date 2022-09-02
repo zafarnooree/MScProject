@@ -5,7 +5,8 @@ const sessions = require('express-session');
 const http = require('http');
 const fileUpload = require('express-fileupload');
 
-
+// Find the media file type
+var mime = require('mime');
 
 // Create express app
 var app = express();
@@ -123,7 +124,7 @@ app.get('/login', function (req, res) {
 app.get('/logout', function (req, res) {
     //req.session = null //Deletes session cookie.
     //Deletes the session from the database.
-    req.session.destroy(); 
+    req.session.destroy(null); 
     res.redirect('/homepage');
   });
 
@@ -196,6 +197,7 @@ app.post('/authenticate', async function (req, res) {
     }
 });
 
+// Creating a new user
 app.get("/all-applications/:id", async function(req, res) {
     var id = req.params.id;
     //Create a user profile with ID passed
@@ -207,20 +209,8 @@ app.get("/all-applications/:id", async function(req, res) {
     resultApplications = await getApplications.getAllApplications();
     res.render('user', {'User':user, 'Applications':resultApplications});
 });
-// var saveData = (function () {
-//     var a = document.createElement("a");
-//     document.body.appendChild(a);
-//     a.style = "display: none";
-//     return function (data, fileName) {
-//         var json = JSON.stringify(data),
-//             blob = new Blob([json], {type: "octet/stream"}),
-//             url = window.URL.createObjectURL(blob);
-//         a.href = url;
-//         a.download = fileName;
-//         a.click();
-//         window.URL.revokeObjectURL(url);
-//     };
-// }());
+
+// Allowing user to download the submitted documents.
 app.get("/viewfile/:id", async function(req, res) {
     var id = req.params.id;
     console.log(id);
@@ -228,26 +218,29 @@ app.get("/viewfile/:id", async function(req, res) {
     var document;
     var fileName;
     db.query(sql,[id]).then(results => {
-        document=results.Documents;
-        fileName= results.Filename;  
-        console.log(fileName);
+        document=results[0].Documents;
+        fileName= results[0].Filename;  
         console.log(document);
+        console.log(fileName);
+        var mimetype = mime.lookup(fileName);
+        console.log(mimetype);
+        res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
+        res.setHeader('Content-type',mimetype);
+        res.write(document);
+        res.end();
     });
     //saveData(document,fileName);
 });
 
-app.get("/viewfile1/:id", async function(req, res) {
+// Route for deleting an application
+app.get("/delete/:id", async function(req, res) {
     var id = req.params.id;
     console.log(id);
-    var sql = 'select Documents,Filename from Applications Where A_ID = ?';
+    var sql = 'delete from Applications Where A_ID = ?';
     db.query(sql,[id]).then(results => {
-       //res.setHeader("Content=Lenght",results.Documents.length);
-       res.write(results.Documents,'binary');
-       res.end(); 
-    
+        res.redirect("/all-applications/"+logged_id);
     });
 });
-
 
 
 //**********************************************************************************

@@ -1,12 +1,12 @@
 header {
     text-align: center;
     padding: 10px;
-    font-family: Helvetica;
+    font-family: Garamond;
     font-size: xxx-large;
     background:rgba(255,255,255,0.6);
     transition:background 1.5s ease;
     position:relative;
-   z-index:99;
+    z-index:99;
 }
 
 header.header-sticky{
@@ -299,6 +299,17 @@ h14 {
   margin-top: -150
 }
 
+h15 {
+  white-space: nowrap;
+  position: absolute;
+  text-align: center;
+  margin-left: 1300;
+  padding: 91px;
+  font-family: Helvetica;
+  font-style: oblique;
+  margin-top: -150
+}
+
 .pic {
     margin-left: 100;
     margin-top: 130;
@@ -336,7 +347,7 @@ img {
     position: absolute;
     border: 2px solid #000000;
     border-radius: 15px 50px;
-    background: linear-gradient(to bottom right, rgb(93, 223, 223), #3670c2);
+    background: linear-gradient(to bottom right, rgb(95, 163, 241), #341f6a);
     padding: 20px;
     width: 200px;
     height: 200px;
@@ -397,12 +408,10 @@ select {
     cursor: pointer;
     background-color: #3670c2;
     display: inline-block;
-    width: 150px;
+    width: 158px;
     border-color: #3670c2;
     padding: 10px 20px;
     font-size: 20px;
-    border-style: solid;
-    border-width: 10px;
     border-radius: 10px;
     font-family: Helvetica;
     max-height:150px; 
@@ -413,7 +422,6 @@ select {
   /* The container <div> - needed to position the dropdown content */
 .dropdown {
 display: inline-block;
-position: fixed;
 z-index: 1000;
 }
 
@@ -421,8 +429,7 @@ z-index: 1000;
 .dropdown-content {
 display: none;
 text-align: center;
-background-color: #3670c2;
-min-width: 160px;
+background-color: #749ed9;
 box-shadow: none;
 box-sizing: border-box;
 }
@@ -557,7 +564,36 @@ input[type=text], select {
 
 .tbl-style  {
     background-color: lavender;
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px #ccc;
+    overflow:hidden;
+    font-family: system-ui;
+    }
+
+    tr {
+      box-shadow: 0 5px 10px #ccc;
+    }
+
+    th {
+      padding: 1rem 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+
+
+.Status {
+  border-radius:var(--borderRadius);
+  background-color:rgb(236, 224, 57);
+  padding: 0.2rem 1rem;
+  text-align:center;
 }
+
+.Submitted {
+  background-color: green;
+}
+
 
 label.docs {
     background-color: rgb(123, 32, 188);

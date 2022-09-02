@@ -87,6 +87,22 @@ div(style='padding-left:16px')
   p Navigation bar with a search box and a submit button inside of it.
   p Resize the browser window to see the responsive effect.
 
+Testing the blob file download from the db
+// var saveData = (function () {
+//     var a = document.createElement("a");
+//     document.body.appendChild(a);
+//     a.style = "display: none";
+//     return function (data, fileName) {
+//         var json = JSON.stringify(data),
+//             blob = new Blob([json], {type: "octet/stream"}),
+//             url = window.URL.createObjectURL(blob);
+//         a.href = url;
+//         a.download = fileName;
+//         a.click();
+//         window.URL.revokeObjectURL(url);
+//     };
+// }());
+
 
   Library installation guide:
 
@@ -123,3 +139,163 @@ div(style='padding-left:16px')
   npm audit fix --force   
   npm install express express-session cookie-parser
   npm install express-fileupload
+
+
+    style.
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    }
+    li {
+    float: left;
+    }
+    li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+    li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+    }
+    li.dropdown {
+    display: inline-block;
+    }
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    }
+    .dropdown-content a:hover {background-color: #f1f1f1;}
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+
+    .btn {
+    background: linear-gradient(to right, rgb(138, 92, 245), rgb(22, 20, 20));
+    max-width: 250px;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    font-size: 20px;
+    border-style: linear-gradient(to right, rgb(138, 92, 245), rgb(22, 20, 20));
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+/* Style The Dropdown Button */
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3670c2;
+    display: inline-block;
+    width: 100px;
+    border-color: #3670c2;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    max-height:150px; 
+    overflow-x:hidden; 
+    overflow-y:auto;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+.dropdown {
+display: inline-block;
+z-index: 1000;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+text-align: center;
+background-color: #749ed9;
+box-shadow: none;
+box-sizing: border-box;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+font-size: small;
+font-weight: 700;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    border-left: 3px solid blue;
+}
+
+
+
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3670c2;
+    display: inline-block;
+    width: 100px;
+    border-color: #3670c2;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    max-height:150px; 
+    overflow-x:hidden; 
+    overflow-y:auto;
+}
+
+
+
+   ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(to top left,  rgb(74, 1, 96), 
+    rgba(0, 0, 0, 0));
+    z-index:99
+    }

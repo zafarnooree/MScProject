@@ -1,7 +1,7 @@
 extends layout
 block content
 
-    header All Applications 
+    header All Applications
         div.p7
             a.btn(href='/newentry') + Add New Application
  
@@ -9,7 +9,7 @@ block content
     //.main-content
     //div.list All Applications
     div.All-Applications
-        table.tbl-style(border=3)
+        table.tbl-style(border=2)
             tr 
                 th Application ID 
                 th Company Name 
@@ -19,6 +19,7 @@ block content
                 th Submission Date
                 th Last Update Recieved
                 th Documents
+                th Actions
             tr 
                 for item in data
                     tr
@@ -31,3 +32,11 @@ block content
                         td #{item.LastUpdate}
                         td 
                             a(href='/viewfile/' + item.A_ID) #{item.Filename}
+                        td
+                         div.dropdown(name="Action")
+                            div.dropbtn Choose an Action
+                            div.dropdown-content 
+                             a.dropdown-content(href='/delete/'+ item.A_ID) Delete Record
+                             a.dropdown-content(href='/delete/' + item.A_ID) Withdraw the Application
+                             a.dropdown-content(href='/archive/' + item.A_ID) Archive
+                    tr
