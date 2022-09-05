@@ -4,7 +4,29 @@ block content
     header All Applications
         div.p7
             a.btn(href='/newentry') + Add New Application
+
+    //h14 
+        form(action="search") 
+            input(type="text", placeholder="Search..", name="search")
+            input(type="submit", class="fa fa-search")
  
+        ul
+            li
+                a(href='/logout') Log Out
+            li
+                a(href='/notifications') Notifications 🔔
+            //li.dropdown
+                a.dropbtn(href='javascript:void(0)') Profile Content
+                .dropdown-content
+                 a(href='/all-applications/'+data) All Applications
+                 a(href='/journal') Feedback Journal
+            //li 
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+            nl 
+                a.hbtn(href='/profile/:id' class="fa fa-home") 
+
     - console.log(data)
     //.main-content
     //div.list All Applications
@@ -36,7 +58,8 @@ block content
                          div.dropdown(name="Action")
                             div.dropbtn Choose an Action
                             div.dropdown-content 
-                             a.dropdown-content(href='/delete/'+ item.A_ID) Delete Record
-                             a.dropdown-content(href='/delete/' + item.A_ID) Withdraw the Application
-                             a.dropdown-content(href='/archive/' + item.A_ID) Archive
+                             a.dropdown-content(href='/edit/' + item.A_ID) Edit Application 📝
+                             a.dropdown-content(href='/archive/' + item.A_ID) Archive 🗃️
+                             a.dropdown-content(href='/delete/'+ item.A_ID) Delete Record 🗑️
+                             a.dropdown-content(href='/delete/' + item.A_ID) Withdraw the Application ❎
                     tr

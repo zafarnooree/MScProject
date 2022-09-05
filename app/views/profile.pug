@@ -1,176 +1,36 @@
-doctype html
-head
-  style.
-    body {
-    background: url("https://i.postimg.cc/c1wv5Cvn/leone-venter-Vie-M9-Bd-ZKFo-unsplash-1.jpg");
-    background-position: right;
-    background-repeat: inherit;
-    background-size: 1600px 900px;
-    overflow-y: scroll;
-    }
+extends layout2
+block content
 
-    ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    z-index:99
-    }
+    header2
+        ul
+            li
+                a(href='/logout') Log Out
+            li
+                a(href='/notifications') Notifications 🔔
+            li.dropdown
+                a.dropbtn(href='javascript:void(0)') Profile Content
+                .dropdown-content
+                 a(href='/all-applications/'+data) All Applications
+                 a(href='/journal') Feedback Journal
+            li 
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+            li.homebtn 
+                a.hbtn(href='/homepage' class="fa fa-home")  
 
-    li {
-    float: right;
-    }
+    body
+        h1.style1 Profile Page
+         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
 
-    li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    }
-    li a:hover, .dropdown:hover .dropbtn {
-    background-color: purple;
-    }
-    li.dropdown {
-    display: inline-block;
-    }
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: lightgrey;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    }
-    .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    }
-    .dropdown-content a:hover {background-color: #f1f1f1;}
-    .dropdown:hover .dropdown-content {
-    display: block;
-    }
-    
-    .homebtn {
-    float: left;
-    z-index: 99;
-    }
-
-    .hbtn {
-    background-color: #704cc2;
-    border: none;
-    color: white;
-    padding: 12px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 99;
-    }
-
-    /* Darker background on mouse-over */
-    .hbtn:hover {
-    background-color: RoyalBlue;
-    }
-
-    div {
-    border-radius: 5px;
-    background-color: #f2f2f200;
-    padding: 20px;
-    }
-
-    h1 {
-    text-align: center;
-    padding: 10px;
-    font-family: Garamond;
-    font-size: xxx-large;
-    background:rgba(255,255,255,0.6);
-    transition:background 1.5s ease;
-    position:relative;
-    }
-
-    h1.header-sticky{
-        background:#fff;
-        position:fixed;
-        top:0;
-        left:0;
-        right:0;
-        z-index:999;
-    }
-
-    h1.header-slider{
-        margin-top:-50px;
-    }
-
-    h2 {
-    white-space: nowrap;
-    position: absolute;
-    text-align: center;
-    margin-left: 1300;
-    padding: 91px;
-    font-family: Helvetica;
-    font-style: oblique;
-    margin-top: -150
-    }
-
-    h3 {
-    position: absolute;
-    margin-top: 300;
-    margin-left: 150;
-    font-size: x-large;
-    }
-
-    h4 {
-    font-style: oblique;
-    font-family: Garamond;
-    position: absolute;
-    margin-top: 400;
-    margin-left: 150;
-    font-size: x-large;
-    }
-
-    .style1 {
-    font-family: "Trirong", serif;
-    font-size: 30px;
-    }
-
-
-//div.header
-            a.hbtn(href='/homepage' class="fa fa-home")    
-            | <br>
-
-body
-    
-    ul
-        li
-            a(href='/logout') Log Out
-        li
-            a(href='/notifications') Notifications
-        li.dropdown
-            a.dropbtn(href='javascript:void(0)') Profile Content
-            .dropdown-content
+        //div #{User.Name}
+        .profilepic.row
+            img.rounded-circle.mt-5(width='150px' src='https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg')
+                
+        h2.dropdown 
+            p.dropbtn Select to Add New 🖊️ 
+            .dropdown-content 
              a(href='/all-applications/'+data) Applications
-             a(href='/journal') Journal
-        li.homebtn 
-            a.hbtn(href='/homepage' class="fa fa-home")  
+             a(href='/journal') Feedback Journal
 
-
-h1 Profile Page
-    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
-
-h2
-    form.profilepic(action='/profile_photo' method='POST')
-            //div.p1 
-            input#myFile(type='file' name='filename')
-            //input(type='submit')
-h3
-    div.dropdown 
-            div.dropbtn Select to View
-            div.dropdown-content 
-                a.dropdown-content(href='/all-applications/'+data) Applications
-                 a.dropdown-content(href='/journal') Journal
-
-h4 Calender View
-    
+        h3 Get Started👆

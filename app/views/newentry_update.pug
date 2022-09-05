@@ -1,0 +1,72 @@
+extends layout 
+block content 
+    header.style1 Add a New Job Application Entry
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Trirong')
+
+    //Asking user to fill the required fields of the 'newentry' form.
+    script.
+        function validateForm() {
+        var x = document.forms["Company_Name"]["Job_Title"]["Location"]["Status"]["SubmissionDate"].value;
+        if (x == "" || x == null) {
+        alert("Please fill the empty field");
+        return false;
+        } return true;
+        }
+
+    //New Application's entry form.
+    h12  
+        form.newentry(action='/update' onsubmit='return validateForm()' method='POST' enctype="multipart/form-data")    
+                tr
+                    | Please enter the name of the company:
+                    <br><br>
+                    //label(for='Company_Name')  
+                    input('name'='Company_Name',value=data.Company_Name)
+                    <br><br>
+                tr 
+                    | Please enter the job title:
+                    <br><br> 
+                    //label(for='Job_Title') 
+                    input('name'='Job_Title',value=data.Job_Title)
+                    <br><br>
+                tr 
+                    | Please enter the work location:
+                    <br><br>
+                    //label(for='Location') 
+                    input('name'='Location',value=data.Location)
+                    <br><br>
+                tr
+                    | Select the application status:
+                    <br><br>
+                    //label(for='Status')  
+                    select#status('name'='Status')
+                     option Choose Current status
+                     option(value='Submitted') Submitted
+                     option(value='Under Consideration') Under Consideration
+                     option(value='Initial Interview Call Recieved') Initial Interview Call Recieved
+                     option(value='Second Interview Call Recieved') Second Interview Call Recieved
+                     option(value='Waiting for Interview Outcome') Waiting for Interview Outcome
+                     option(value='Offer Recieved') Offer Recieved
+                     option(value='Offer Declined') Offer Declined
+                    <br><br>
+                tr 
+                    | Add the date you submitted the application:
+                    <br><br>
+                    //label(for='SubmissionDate')  
+                    input(type='date', name ='SubmissionDate', value=data.SubmissionDate)
+                    <br><br>
+                tr 
+                    | Add the date you last had any interaction with the recruiter:
+                    <br><br>
+                    //label(for='LastUpdate')  
+                    input(type='date', name ='LastUpdate', value=data.LastUpdate)
+                    <br><br>
+                tr 
+                    //file upload button
+                    | Documents
+                    <br><br>
+                    label(for='actual-btn') 
+                    input#actual-btn(type='file', name="Documents")
+                    <br><br> 
+                tr 
+                    input(type="hidden" ,value=data.A_ID, name="A_ID")
+                input(type='submit' value='Submit')

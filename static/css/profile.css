@@ -1,0 +1,246 @@
+header2 {
+    position:relative;
+    z-index:99;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    font-family: Garamond;
+    font-size: xxx-large;
+    background:rgba(255,255,255,0.6);
+    transition:background 1.5s ease;
+    position:relative;
+}
+
+h1.header-sticky{
+    background:#fff;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+}
+
+h1.header-slider{
+    margin-top:-50px;
+}
+
+   
+  body {
+    background: url("https://i.postimg.cc/c1wv5Cvn/leone-venter-Vie-M9-Bd-ZKFo-unsplash-1.jpg");
+    background-position: right;
+    background-repeat: inherit;
+    background-size: 1600px 900px;
+    overflow-y: scroll;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    z-index:99
+  }
+
+  li {
+    float: right;
+  }
+
+  li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  li a:hover, .dropdown:hover .dropbtn {
+    background-color: purple;
+  }
+  li.dropdown {
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    width: fit-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  .dropdown-content a:hover {background-color: #f1f1f1;}
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Style The Dropdown Button */
+.dropbtn1 {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3670c2;
+    display: inline-block;
+    width: 158px;
+    border-color: #3670c2;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    max-height:150px; 
+    overflow-x:hidden; 
+    overflow-y:auto;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+.dropdown1 {
+    display: inline-block;
+    z-index: 1000;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content1 {
+    display: none;
+    text-align: center;
+    background-color: #749ed9;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+.homebtn {
+    float: left;
+    z-index: 99;
+}
+
+.hbtn {
+    background-color: #704cc2;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 99;
+}
+
+/* Darker background on mouse-over */
+.hbtn:hover {
+    background-color: RoyalBlue;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profilepic {
+    position: relative;
+    margin-left: 30;
+    background: linear-gradient(46deg, black, #206289b8);
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.style1 {
+    font-family: "Trirong", serif;
+    font-size: 30px;
+}
+
+div {
+    border-radius: 27px;
+    padding: 21px;
+    width: 650;
+}
+
+p {
+    text-align: center;
+    border-radius: 92px;
+    background: linear-gradient(46deg, rgb(99 39 120), #206289b8);
+    padding: 21px;
+    width: 290;
+}
+
+h2 {
+    border-radius: 86px;
+    padding: 5px;
+    width: 200;
+    margin-left: 50;
+}
+
+h3 {
+    animation-duration: 8s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    font-size: xxxlarge;
+    font-family: Garamond;
+    font-style: oblique;
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+h4 {
+  margin-left: 400;
+  border-color: aliceblue;
+  background-color: aliceblue;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  border-style: groove;
+  border-width: 6px;
+  border-radius: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  z-index: 99;
+}
+

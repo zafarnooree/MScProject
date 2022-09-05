@@ -124,7 +124,7 @@ h1 {
   padding: 91px;
   font-family: Helvetica;
   font-style: oblique;
-  margin-top: -150
+  margin-top: -130;
 }
 
 h2 {
@@ -310,6 +310,28 @@ h15 {
   margin-top: -150
 }
 
+h16 {
+  margin-top: 500;
+  margin-left: 500;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  animation-name:homedesign;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes homedesign {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+
+
 .pic {
     margin-left: 100;
     margin-top: 130;
@@ -351,6 +373,16 @@ img {
     padding: 20px;
     width: 200px;
     height: 200px;
+}
+
+.hpage  {
+  background: url("https://i.postimg.cc/5NFsHVG0/rTracker.jpg");
+  width: 605px;
+  height:  433px;
+  margin-top: -52px;;
+  margin-left:  714px;
+  background-repeat: no-repeat;
+  border-radius: 121px;
 }
 
 .logo {
@@ -466,6 +498,7 @@ color: white;
 padding: 12px 16px;
 font-size: 16px;
 cursor: pointer;
+float: left;
 }
 
 /* Darker background on mouse-over */
@@ -563,11 +596,12 @@ input[type=text], select {
   }
 
 .tbl-style  {
-    background-color: lavender;
+    background: linear-gradient(56deg, rgb(169 160 191), lavender);
     border-collapse: collapse;
     box-shadow: 0 5px 10px #ccc;
     overflow:hidden;
     font-family: system-ui;
+    text-align: center;
     }
 
     tr {
@@ -865,4 +899,35 @@ input.text:active + span {
   100% {
     transform: translate(10%, -10%) scale(1);
   }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  z-index:99
+}
+
+li {
+  float: right;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+  background: linear-gradient(to right, rgb(138, 92, 245), rgb(22, 20, 20));
+}
+li.dropdown {
+  display: inline-block;
+}
+
+nl {
+  float: left;
 }

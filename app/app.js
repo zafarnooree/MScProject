@@ -77,7 +77,7 @@ app.get('/all-applications/:id', function(req, res) {
     var id = req.params.id;
     console.log("this function is called.");
     // Prepare an SQL query that will return all rows from the applications_table
-    var sql = 'select * from Applications Where id = ?';
+    var sql = 'select A_ID,Company_Name, Job_Title, Location, Status, DATE_FORMAT(SubmissionDate, "%D %b, %Y") SubmissionDate,DATE_FORMAT(LastUpdate, "%D %b, %Y") LastUpdate, Documents,Filename from Applications Where id = ?';
     db.query(sql,[id]).then(results => {
         res.render('all-applications', {data:results});
     });
@@ -139,12 +139,18 @@ app.post('/newentry', async function (req, res) {
     console.log(req.session.id);
     var fileName;
     var fileData;
-    console.log(req.files.Documents);
-    fileName=req.files.Documents.name;
-    fileData=req.files.Documents.data;
-    console.log("File DAta is: ");
-    console.log(fileData);
-    console.log(fileName);
+    if (req.files!=null){
+        console.log(req.files.Documents);
+        fileName=req.files.Documents.name;
+        fileData=req.files.Documents.data;
+        console.log("File Data is: ");
+        console.log(fileData);
+        console.log(fileName);
+    }
+    else{
+        fileName="";
+        fileData="";
+    }
     var id=logged_id;
     console.log(id);
     console.log(params.LastUpdate);
@@ -157,7 +163,38 @@ app.post('/newentry', async function (req, res) {
     console.log(result);
     //alert("Application information added successfully.");
     res.redirect("/all-applications/"+ id);
+});
 
+//Route to recieve new entry form posting
+app.post('/update', async function (req, res) {
+    params = req.body;
+    console.log(req.session.id);
+    var fileName;
+    var fileData;
+    if (req.files!=null){
+        console.log(req.files.Documents);
+        fileName=req.files.Documents.name;
+        fileData=req.files.Documents.data;
+        console.log("File Data is: ");
+        console.log(fileData);
+        console.log(fileName);
+    }
+    else{
+        fileName="";
+        fileData="";
+    }
+    var id=logged_id;
+    console.log(id);
+    console.log(params.LastUpdate);
+    if(params.LastUpdate==''){
+        params.LastUpdate=null;
+    }
+    var newapp = new Applications(id,params.Company_Name, params.Job_Title, params.Location, params.Status, params.SubmissionDate, params.LastUpdate,fileName);
+    var result=await newapp.addApplication(fileData,params.A_ID);
+    console.log("Applicaiton added successfully");
+    console.log(result);
+    //alert("Application information added successfully.");
+    res.redirect("/all-applications/"+ id);
 });
 
 // Check submitted email and password pair
@@ -198,17 +235,17 @@ app.post('/authenticate', async function (req, res) {
 });
 
 // Creating a new user
-app.get("/all-applications/:id", async function(req, res) {
-    var id = req.params.id;
-    //Create a user profile with ID passed
-    var user = new User(id);
-    await user.getUserDetails();
-    await user.getUserImage();
-    await user.getUserApplications();
-    await user.getUserJournal();
-    resultApplications = await getApplications.getAllApplications();
-    res.render('user', {'User':user, 'Applications':resultApplications});
-});
+// app.get("/all-applications/:id", async function(req, res) {
+//     var id = req.params.id;
+//     //Create a user profile with ID passed
+//     var user = new User(id);
+//     await user.getUserDetails();
+//     await user.getUserImage();
+//     await user.getUserApplications();
+//     await user.getUserJournal();
+//     resultApplications = await getApplications.getAllApplications();
+//     res.render('user', {'User':user, 'Applications':resultApplications});
+// });
 
 // Allowing user to download the submitted documents.
 app.get("/viewfile/:id", async function(req, res) {
@@ -239,6 +276,16 @@ app.get("/delete/:id", async function(req, res) {
     var sql = 'delete from Applications Where A_ID = ?';
     db.query(sql,[id]).then(results => {
         res.redirect("/all-applications/"+logged_id);
+    });
+});
+
+// Route for editing/updating an application
+app.get("/edit/:id", async function(req, res) {
+    var id = req.params.id;
+    console.log(id);
+    var sql = 'Select A_ID,Company_Name, Job_Title, Location, Status, DATE_FORMAT(SubmissionDate, "%Y-%m-%d") SubmissionDate,DATE_FORMAT(LastUpdate, "%Y-%m-%d") LastUpdate from Applications Where A_ID = ?';
+    db.query(sql,[id]).then(results => {
+        res.render('newentry_update', {data:results[0]});
     });
 });
 
