@@ -15,6 +15,7 @@ class Applications {
     LastUpdate;
     DocumentName;
     DocumentData;
+    
 
     constructor(User_id,Company_Name, Job_Title, Location, Status, SubmissionDate, LastUpdate,DocumentName) {
         //this.A_ID = A_ID;
@@ -68,6 +69,12 @@ class Applications {
             this.Applications.push(new Applications(row.Company_Name, row.Job_Title, row.Location, row.Status, row.SubmissionDate, row.LastUpdate, row.Filename));
         }
     }
+    async getUserApplications_new(user_id){
+        var sql = 'select A_ID,Company_Name, Job_Title, Location, Status, DATE_FORMAT(SubmissionDate, "%D %b, %Y") SubmissionDate,DATE_FORMAT(LastUpdate, "%D %b, %Y") LastUpdate, Documents,Filename from Applications Where id = ?';
+        const results = await db.query(sql, [user_id]);
+       
+        return results;
+    }
 
     async getUserJournal() {
         var sql = "SELECT Journal.J_ID, Journal.DayOfWeek, Journal.I_Notes, Journal.Feedback \
@@ -89,7 +96,15 @@ class Applications {
         this.id = result.insertId;
         return this.id;
     }
-
+    async updateApplication(fileData,Aid) {
+        var sql = "UPdate   Applications SET id=?,Company_Name=?, Job_Title=?, Location=?, Status=?, submissionDate=?, LastUpdate=?, Documents=?,Filename=? Where A_ID=?";
+        console.log(this.User_id);
+        const result = await db.query(sql, [this.User_id,this.Company_Name,this.Job_Title, this.Location, this.Status, this.SubmissionDate, this.LastUpdate, fileData,this.DocumentName,Aid]);
+        console.log(result.insertId);
+        this.id = result.insertId;
+        return this.id;
+    }
+    
 }
 
 module.exports = {

@@ -3,9 +3,9 @@ block content
 
     header All Applications
         div.p7
-            a.btn(href='/newentry') + Add New Application
+            a.btn(href='/newentry/'+logged_id) + Add New Application
 
-    //h14 
+    h14 
         form(action="search") 
             input(type="text", placeholder="Search..", name="search")
             input(type="submit", class="fa fa-search")
@@ -24,13 +24,14 @@ block content
                 <form action="/action_page.php">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
-            nl 
+            //nl 
                 a.hbtn(href='/profile/:id' class="fa fa-home") 
 
-    - console.log(data)
+    // console.log(data)
     //.main-content
     //div.list All Applications
     div.All-Applications
+        
         table.tbl-style(border=2)
             tr 
                 th Application ID 
@@ -45,7 +46,8 @@ block content
             tr 
                 for item in data
                     tr
-                        td #{item.A_ID} 
+                        td 
+                            a(href='/application_details') #{item.A_ID} 
                         td #{item.Company_Name} 
                         td #{item.Job_Title}
                         td #{item.Location}
@@ -58,8 +60,9 @@ block content
                          div.dropdown(name="Action")
                             div.dropbtn Choose an Action
                             div.dropdown-content 
-                             a.dropdown-content(href='/edit/' + item.A_ID) Edit Application 📝
+                             a.dropdown-content(href='/edit/' + item.A_ID+"&"+logged_id) Edit Application 📝
                              a.dropdown-content(href='/archive/' + item.A_ID) Archive 🗃️
-                             a.dropdown-content(href='/delete/'+ item.A_ID) Delete Record 🗑️
+                             a.dropdown-content(href='/delete/'+ item.A_ID+"&"+logged_id) Delete Record 🗑️
                              a.dropdown-content(href='/delete/' + item.A_ID) Withdraw the Application ❎
+                             
                     tr

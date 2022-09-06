@@ -385,6 +385,13 @@ img {
   border-radius: 121px;
 }
 
+.application_details  {
+  background: url("https://i.postimg.cc/RVgYRj9n/Applicationdetailpageconcept.jpg");
+  background-repeat: no-repeat;
+  background-size: 1499px 648px;
+  padding: 500;
+}
+
 .logo {
     background: url("");
     width: 335;
